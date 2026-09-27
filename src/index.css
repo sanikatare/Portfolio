@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  @apply bg-surface-light text-slate-800 antialiased selection:bg-brand-500 selection:text-white transition-colors duration-300;
+  font-family: 'Playfair Display', Georgia, serif;
+  overflow-x: hidden;
+}
+
+html.dark body {
+  background-color: #090d16;
+  color: #e2e8f0;
+}
+
+/* Comprehensive dark mode overrides for light surfaces, borders, and typography */
+html.dark .bg-surface-light {
+  background-color: #090d16 !important;
+}
+
+html.dark .bg-white {
+  background-color: #121929 !important;
+}
+
+html.dark .bg-white\/80 {
+  background-color: rgba(18, 25, 41, 0.85) !important;
+}
+
+html.dark .bg-slate-50,
+html.dark .bg-slate-50\/50,
+html.dark .bg-slate-50\/60,
+html.dark .bg-slate-50\/70,
+html.dark .bg-slate-50\/80,
+html.dark .bg-slate-50\/90 {
+  background-color: #0d131f !important;
+}
+
+html.dark .bg-slate-100,
+html.dark .bg-slate-200\/80 {
+  background-color: #172238 !important;
+}
+
+html.dark .bg-brand-50 {
+  background-color: rgba(29, 78, 216, 0.15) !important;
+}
+
+html.dark .text-slate-900 {
+  color: #f8fafc !important;
+}
+
+html.dark .text-slate-800 {
+  color: #e2e8f0 !important;
+}
+
+html.dark .text-slate-700 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-600 {
+  color: #94a3b8 !important;
+}
+
+html.dark .text-slate-500 {
+  color: #64748b !important;
+}
+
+html.dark .text-brand-600,
+html.dark .text-brand-700,
+html.dark .text-brand-800 {
+  color: #60a5fa !important;
+}
+
+html.dark .border-slate-100,
+html.dark .border-slate-200,
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/90,
+html.dark .border-slate-300 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark .border-brand-200,
+html.dark .border-brand-200\/70,
+html.dark .border-brand-200\/80 {
+  border-color: rgba(56, 163, 248, 0.3) !important;
+}
+
+button, input, textarea, select {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 3px;
+}
+
+.container-custom {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f2f5;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0d131f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #33446b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8;
+}
