@@ -2,11 +2,11 @@ import { useState } from 'react'
 import { motion, useReducedMotion, AnimatePresence } from 'framer-motion'
 import { ArrowUpRight, ExternalLink } from 'lucide-react'
 import { GithubIcon } from '../components/BrandIcons'
-import { portfolioProjects, getTechBadgeStyle, type PortfolioProject } from '../data/portfolio'
+import { portfolioProjects, getTechBadgeStyle, profile, type PortfolioProject } from '../data/portfolio'
 import ProjectModal from '../components/ProjectModal'
 import { sectionContainerVariants, fadeInUpVariants, cardStaggerVariants } from '../utils/motion'
 
-const categories = ['All', 'AI / ML & RAG', 'Distributed Systems', 'Full-Stack MERN', 'Deep Learning & IoT'] as const
+const categories = ['All', 'AI / ML & RAG', 'Full-Stack MERN', 'Deep Learning & IoT'] as const
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState<string>('All')
@@ -35,6 +35,18 @@ export default function Portfolio() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold tracking-tight text-slate-900">
               Applied Work &amp; <span className="text-brand-500">Code Repositories</span>
             </h2>
+            <div className="mt-2 flex items-center justify-center">
+              <a
+                href={profile.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white border border-slate-200 hover:border-brand-400 px-3.5 py-1 text-xs font-semibold text-slate-700 hover:text-brand-600 shadow-2xs transition-all"
+              >
+                <GithubIcon size={14} />
+                <span>@sanikatare · github.com/sanikatare</span>
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </div>
           </div>
 
           {/* Category Filter Tabs */}

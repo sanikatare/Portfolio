@@ -312,12 +312,36 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               <div>
                 <div className="flex flex-wrap items-baseline justify-between">
                   <span className="font-bold text-slate-900">
-                    JurisAI — Legal Document Intelligence Platform
+                    GenAI (VedaWise) — Explainable Hybrid RAG System
                   </span>
-                  <span className="text-slate-500 font-mono">Python, NLP, OCR, LLMs, RAG</span>
+                  <span className="text-slate-500 font-mono">Python, Hybrid RAG, LLMs, Vector Search, FastAPI</span>
                 </div>
                 <p className="mt-1 text-slate-700">
-                  AI-powered legal document analysis platform for clause extraction, semantic search, summarization, and interactive Q&A via a scalable Python processing pipeline.
+                  Explainable AI platform for life-oriented knowledge discovery from the Rig Veda across 4 explicit epistemic layers with hybrid semantic + lexical retrieval and citation verification.
+                </p>
+              </div>
+
+              <div>
+                <div className="flex flex-wrap items-baseline justify-between">
+                  <span className="font-bold text-slate-900">
+                    ElectroFine — Smart E-Waste Recycling &amp; Collector Tracking
+                  </span>
+                  <span className="text-slate-500 font-mono">Next.js, TypeScript, Prisma, Tailwind CSS</span>
+                </div>
+                <p className="mt-1 text-slate-700">
+                  Modern e-waste disposal platform with smart pickup scheduling, live collector tracking, and a dynamic fair-payout valuation engine.
+                </p>
+              </div>
+
+              <div>
+                <div className="flex flex-wrap items-baseline justify-between">
+                  <span className="font-bold text-slate-900">
+                    Hinglish Sentiment Analysis — Comparative Deep Learning
+                  </span>
+                  <span className="text-slate-500 font-mono">Python, BiLSTM, LSTM, RNN, TensorFlow</span>
+                </div>
+                <p className="mt-1 text-slate-700">
+                  Benchmarked RNN, LSTM, and BiLSTM models on code-mixed Hindi-English social media text, achieving 94.86% accuracy with Bidirectional LSTM.
                 </p>
               </div>
             </div>
