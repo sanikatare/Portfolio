@@ -14,6 +14,7 @@ export interface ProfileData {
   githubUrl: string
   githubUsername: string
   linkedinUrl: string
+  mediumUrl: string
   avatarUrl: string
   summary: string
   shortSummary: string
@@ -44,6 +45,7 @@ export const profile: ProfileData = {
   githubUrl: 'https://github.com/sanikatare',
   githubUsername: 'sanikatare',
   linkedinUrl: 'https://linkedin.com/in/sanikatare',
+  mediumUrl: 'https://medium.com/@sanikatare.work',
   avatarUrl: '/me.png',
   quote:
     'Working on AI/ML tools and using my creative skills in building and designing high-impact products from research to production.',
@@ -367,26 +369,6 @@ export interface PortfolioProject {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
-    id: 'electrofine',
-    title: 'ElectroFine',
-    subtitle: 'Smart E-Waste Recycling & Real-Time Collector Tracking',
-    category: 'Full-Stack MERN',
-    featured: true,
-    badge: 'Live E-Waste Platform',
-    description:
-      'A modern e-waste recycling platform that helps individuals and businesses dispose of electronic waste responsibly. Users can schedule pickups, monitor collector location in real time, and receive transparent, fair payouts based on recyclable value.',
-    highlights: [
-      'Smart pickup scheduling based on availability and location with device type, quantity, condition, and weight tracking.',
-      'Real-time collector tracking on a live map with status transitions from Scheduled to Completed.',
-      'Dynamic fair payout valuation engine based on device category, material recovery potential, and item condition.',
-      'Digitized recycling records for trust, transparency, and environmental accountability.',
-    ],
-    tech: ['Next.js', 'TypeScript', 'React.js', 'Tailwind CSS', 'Node.js', 'Prisma'],
-    githubUrl: 'https://github.com/sanikatare/ElectroFinee',
-    liveUrl: 'https://electro-finee-ebon.vercel.app',
-    impact: 'Live Pickup Tracking · Fair Payout Engine · Deployed Live',
-  },
-  {
     id: 'vehicle-digital-twin',
     title: 'Digital Twin — Vehicle Brain',
     subtitle: 'AI-Powered Vehicle Telemetry, Predictive Maintenance & RAG Diagnostics',
@@ -399,32 +381,12 @@ export const portfolioProjects: PortfolioProject[] = [
       'Unified 8-phase automotive intelligence dashboard featuring a custom 270° instrument-cluster telemetry gauge system.',
       'Trained XGBoost, Random Forest, and LightGBM models for predictive failure detection and Remaining Useful Life (RUL) estimation.',
       'Built a RAG pipeline utilizing LangChain, ChromaDB vector store, and LLMs over vehicle manuals and OBD-II diagnostic codes.',
-      'Architected containerized Python FastAPI backend services with real-time telemetry health scoring and route intelligence.',
+      'Architected containerized Python FastAPI backend services with Nginx gateway routing, real-time telemetry health scoring, and route intelligence.',
     ],
     tech: ['Python', 'FastAPI', 'React.js', 'LangChain', 'ChromaDB', 'XGBoost', 'LightGBM', 'Docker'],
     githubUrl: 'https://github.com/sanikatare/DigitalTwin',
     liveUrl: 'https://digitaltwin-w1l1.onrender.com/',
     impact: '8 Backend Phases · Predictive RUL · Deployed Live',
-  },
-  {
-    id: 'pawprints',
-    title: 'PawPrints',
-    subtitle: 'Full-Stack Pet Health Monitoring & Diagnosis System',
-    category: 'Full-Stack MERN',
-    featured: true,
-    badge: 'Full-Stack MERN App',
-    description:
-      'A full-stack MERN web application designed to help pet owners monitor, manage, and track the health of their pets through pet profiles, medical records, vaccination schedules, symptom-based disease predictions, and veterinary appointments.',
-    highlights: [
-      'Developed 6+ core modules: pet profiles, digital medical records, vaccination schedules, appointments, diagnosis history, and care recommendations.',
-      'Architected 15+ REST APIs and CRUD operations across 6 MongoDB collections with Mongoose schema validation.',
-      'Implemented secure JWT authentication, password encryption with bcrypt, protected routes, and role-based access control (RBAC).',
-      'Crafted a responsive React.js interface integrated with Node.js and Express.js backend services.',
-    ],
-    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'bcrypt', 'Mongoose', 'Tailwind CSS'],
-    githubUrl: 'https://github.com/sanikatare/Pawprints',
-    liveUrl: 'https://pawprints-lake.vercel.app',
-    impact: '15+ REST APIs · 6 Core Modules · Deployed Live',
   },
   {
     id: 'genai-vedawise',
@@ -439,12 +401,72 @@ export const portfolioProjects: PortfolioProject[] = [
       'Separated grounded outputs into 4 explicit epistemic layers: Textual Evidence (Direct), Theme (Thematic), Contemporary Connection (Interpretive), and Unsupported Claim Guardrails.',
       'Built hybrid retrieval combining semantic vector embeddings and lexical search with verbatim Sanskrit, transliteration, and [RV_M_S_V] verse citations.',
       'Designed explainable AI verification workflows ensuring modern reflective analogies are clearly distinguished from primary scriptural text.',
-      'Deployed an interactive web interface for querying life-oriented motifs with transparent source attribution.',
+      'Deployed an interactive TypeScript & React web interface for querying life-oriented motifs with transparent source attribution.',
     ],
-    tech: ['Python', 'GenAI', 'Hybrid RAG', 'LLMs', 'NLP', 'Vector Search', 'FastAPI', 'React.js'],
+    tech: ['TypeScript', 'React.js', 'Python', 'FastAPI', 'Hybrid RAG', 'LLMs', 'Vector Search', 'NLP'],
     githubUrl: 'https://github.com/sanikatare/GENAI',
     liveUrl: 'https://genai-hv7o.onrender.com',
     impact: '4 Epistemic Layers · Hybrid RAG · Deployed Live',
+  },
+  {
+    id: 'electrofine',
+    title: 'ElectroFine',
+    subtitle: 'Smart E-Waste Recycling & Real-Time Collector Tracking',
+    category: 'Full-Stack MERN',
+    featured: true,
+    badge: 'Live E-Waste Platform',
+    description:
+      'A modern e-waste recycling platform that helps individuals and businesses dispose of electronic waste responsibly. Users can schedule pickups, monitor collector location in real time, and receive transparent, fair payouts based on recyclable value.',
+    highlights: [
+      'Smart pickup scheduling based on availability and location with device type, quantity, condition, and weight tracking.',
+      'Real-time collector tracking on a live map with status transitions from Scheduled to Completed.',
+      'Dynamic fair payout valuation engine based on device category, material recovery potential, and item condition.',
+      'Autonomous Mongoose & MongoDB document store with digitized recycling records and CO₂ impact metrics.',
+    ],
+    tech: ['TypeScript', 'React.js', 'Node.js', 'MongoDB', 'Mongoose', 'Tailwind CSS', 'REST APIs'],
+    githubUrl: 'https://github.com/sanikatare/ElectroFinee',
+    liveUrl: 'https://electro-finee-ebon.vercel.app',
+    impact: 'Live Pickup Tracking · Fair Payout Engine · Deployed Live',
+  },
+  {
+    id: 'home-iq',
+    title: 'Home IQ',
+    subtitle: 'Autonomous Household Intelligence & Multi-Agent Estate Management Platform',
+    category: 'AI / ML & RAG',
+    featured: true,
+    badge: 'Multi-Agent AI & 22-Table Core',
+    description:
+      'A full-stack, policy-governed household operating system unifying 8 core household domains under a deterministic 22-table relational core and a multi-agent intelligence plane powered by Gemini 2.5 Flash, BioBERT + PubMedQA (99.7% F1), LayoutLMv3, Donut, grounded RAG citations, and Human-in-the-Loop (HITL) approval gates.',
+    highlights: [
+      'Architected an 8-domain household workspace (Kitchen, Laundry, Maintenance, Finance, EV Mobility, Document Vault, Parents\' Health, Travel) backed by 22 normalized SQLAlchemy 2.0 / PostgreSQL 16 tables.',
+      'Engineered a grounded Multi-Agent Orchestrator with 3-tier tool permission sandboxing and mandatory Human-in-the-Loop (HITL) approval gates for consequential financial actions.',
+      'Integrated domain-specific models including BioBERT + PubMedQA (99.7% F1 across 8 clinical biomarkers), LayoutLMv3, Donut, and SciBERT with SHA-256 OCR document deduplication.',
+      'Built an interactive 84-piece self-pinning landing portal with React 19, TypeScript, Tailwind CSS v4, Node.js 22, FastAPI, Pydantic v2, and a 12-document golden evaluation benchmark.',
+    ],
+    tech: ['React 19', 'TypeScript', 'Python', 'FastAPI', 'SQLAlchemy 2.0', 'PostgreSQL', 'Gemini 2.5 Flash', 'BioBERT', 'LayoutLMv3', 'Multi-Agent RAG', 'Docker'],
+    githubUrl: 'https://github.com/sanikatare/HomeIQ',
+    liveUrl: 'https://homeiq-platform.onrender.com/',
+    impact: '8 Domains · 99.7% BioBERT F1 · Deployed Live',
+  },
+  {
+    id: 'pawprints',
+    title: 'PawPrints',
+    subtitle: 'Full-Stack Pet Health Monitoring & Diagnosis System',
+    category: 'Full-Stack MERN',
+    featured: true,
+    badge: 'Full-Stack MERN App',
+    description:
+      'A full-stack MERN web application designed to help pet owners monitor, manage, and track the health of their pets through pet profiles, medical records, vaccination schedules, symptom-based disease predictions, and veterinary appointments.',
+    highlights: [
+      'Developed 6+ core modules: pet profiles, digital medical records, vaccination schedules, appointments, symptom-based diagnosis engine, and community forum.',
+      'Architected 15+ REST APIs and CRUD operations across 6 MongoDB collections with Mongoose schema validation.',
+      'Implemented secure JWT authentication, password encryption with bcrypt, protected routes, and role-based access control (RBAC).',
+      'Crafted a responsive React.js analytics dashboard with Chart.js visualizations, React Router DOM, and Axios integration.',
+    ],
+    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'bcrypt', 'Chart.js'],
+    githubUrl: 'https://github.com/sanikatare/Pawprints',
+    liveUrl: 'https://pawprints-lake.vercel.app',
+    impact: '15+ REST APIs · 6 Core Modules · Deployed Live',
   },
   {
     id: 'hinglish-sentiment',
@@ -460,7 +482,7 @@ export const portfolioProjects: PortfolioProject[] = [
       'Benchmarked RNN (85.20%), LSTM (91.40%), and Bidirectional LSTM (94.86% accuracy, 0.942 Macro F1) on the same dataset.',
       'Demonstrated that Bidirectional LSTM captures long-range bidirectional context best in informal code-mixed text.',
     ],
-    tech: ['Python', 'BiLSTM', 'LSTM', 'RNN', 'NLP', 'TensorFlow', 'Scikit-learn'],
+    tech: ['Python', 'BiLSTM', 'LSTM', 'RNN', 'TensorFlow', 'Keras', 'NLP', 'Scikit-learn'],
     githubUrl: 'https://github.com/sanikatare/Hinglish-sentiment-analysis-rnn-lstm-bilstm',
     impact: '94.86% Accuracy · Code-Mixed NLP Benchmark',
   },
@@ -572,54 +594,58 @@ export const technicalSkills = {
   backend: [
     'Python',
     'FastAPI',
-    'Flask (familiar)',
-    'Node.js',
+    'Pydantic v2',
+    'SQLAlchemy 2.0',
+    'Alembic Migrations',
+    'Node.js 22',
     'Express.js',
     'REST API Design',
     'JWT Authentication',
     'bcrypt',
     'Role-Based Access Control (RBAC)',
+    'Policy & Permission Sandboxing',
   ],
   frontend: [
-    'React.js',
-    'JavaScript (ES6+)',
+    'React 19 / React.js',
     'TypeScript',
+    'JavaScript (ES6+)',
+    'Tailwind CSS v4',
+    'Vite',
+    'React Router DOM',
+    'Axios',
+    'Chart.js',
     'Responsive UI Development',
-    'Tailwind CSS',
     'Figma-to-Component',
-    'API Integration',
   ],
   databases: [
+    'PostgreSQL 16',
     'MongoDB (NoSQL)',
     'Mongoose ODM',
-    'SQL / MySQL',
-    'Data Modelling',
+    'ChromaDB Vector Store',
+    'SQL / Relational Modelling',
     'Query Optimization',
     'Aggregation Pipelines',
   ],
   aiMl: [
+    'Google GenAI (Gemini 2.5 Flash)',
+    'Multi-Agent Orchestration & HITL',
+    'Hybrid & Grounded RAG Pipelines',
     'LangChain',
-    'ChromaDB',
-    'Retrieval-Augmented Generation (RAG)',
-    'Large Language Models (LLMs)',
-    'TensorFlow',
+    'BioBERT & PubMedQA Clinical AI',
+    'LayoutLMv3, Donut & SciBERT',
+    'XGBoost, LightGBM & Random Forest',
+    'TensorFlow & Keras',
+    'BiLSTM, LSTM & RNN',
     'Scikit-Learn',
-    'XGBoost',
-    'LightGBM',
-    'Random Forest',
-    'LSTM & Transformers',
-    'Pandas',
-    'NumPy',
-    'NLP & OCR',
+    'Pandas, NumPy & Matplotlib',
+    'NLP & Document OCR (SHA-256)',
   ],
   aiDevTools: [
     'Cursor',
     'Claude',
     'ChatGPT',
     'GitHub Copilot workflows',
-    'Antigravity',
-    'Qoder',
-    'Prompt Engineering for Productivity',
+    'Prompt Engineering & Epistemic Guardrails',
   ],
   coreCs: [
     'Data Structures & Algorithms (DSA)',
@@ -630,11 +656,13 @@ export const technicalSkills = {
     'Agile, Scrum & Jira (SDLC)',
   ],
   toolsAndCloud: [
-    'Jira & Agile Scrum',
-    'AWS Cloud Practitioner (certified)',
+    'Docker & Docker Compose',
+    'Nginx Gateway',
+    'Render & Vercel Deployment',
+    'AWS Cloud Practitioner (Certified)',
     'Git & GitHub',
-    'Postman (API Testing)',
-    'VS Code',
+    'Postman & pytest',
+    'Jira & Agile Scrum',
   ],
 }
 
@@ -807,7 +835,10 @@ export function getTechBadgeStyle(tech: string): { badge: string; dot: string } 
     normalized.includes('langchain') ||
     normalized.includes('llm') ||
     normalized.includes('chromadb') ||
-    normalized.includes('rag')
+    normalized.includes('rag') ||
+    normalized.includes('gemini') ||
+    normalized.includes('genai') ||
+    normalized.includes('vector')
   ) {
     return {
       badge: 'bg-violet-50 text-violet-700 border-violet-200/90 dark:bg-violet-950/60 dark:text-violet-300 dark:border-violet-800/60',
@@ -819,7 +850,9 @@ export function getTechBadgeStyle(tech: string): { badge: string; dot: string } 
     normalized.includes('express') ||
     normalized.includes('mongodb') ||
     normalized.includes('mongoose') ||
-    normalized.includes('prisma')
+    normalized.includes('prisma') ||
+    normalized.includes('rest') ||
+    normalized.includes('docker')
   ) {
     return {
       badge: 'bg-emerald-50 text-emerald-700 border-emerald-200/90 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800/60',
@@ -830,7 +863,9 @@ export function getTechBadgeStyle(tech: string): { badge: string; dot: string } 
     normalized.includes('grpc') ||
     normalized.includes('rabbitmq') ||
     normalized.includes('websocket') ||
-    normalized.includes('webrtc')
+    normalized.includes('webrtc') ||
+    normalized.includes('biobert') ||
+    normalized.includes('layoutlm')
   ) {
     return {
       badge: 'bg-purple-50 text-purple-700 border-purple-200/90 dark:bg-purple-950/60 dark:text-purple-300 dark:border-purple-800/60',
@@ -839,6 +874,7 @@ export function getTechBadgeStyle(tech: string): { badge: string; dot: string } 
   }
   if (
     normalized.includes('tensorflow') ||
+    normalized.includes('keras') ||
     normalized.includes('lstm') ||
     normalized.includes('rnn') ||
     normalized.includes('nlp') ||

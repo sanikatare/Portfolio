@@ -1,5 +1,5 @@
 import { ArrowUpRight, Mail, Phone, MapPin, FileText } from 'lucide-react'
-import { GithubIcon, LinkedinIcon } from './BrandIcons'
+import { GithubIcon, LinkedinIcon, MediumIcon } from './BrandIcons'
 import { profile } from '../data/portfolio'
 
 interface FooterProps {
@@ -40,6 +40,15 @@ export default function Footer({ onOpenResume }: FooterProps) {
                 aria-label="LinkedIn profile"
               >
                 <LinkedinIcon size={16} />
+              </a>
+              <a
+                href={profile.mediumUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-brand-500 hover:border-brand-500 transition-colors"
+                aria-label="Medium profile"
+              >
+                <MediumIcon size={16} />
               </a>
               <a
                 href={`mailto:${profile.email}`}

@@ -18,18 +18,18 @@ export default function Portfolio() {
     : portfolioProjects.filter((p) => p.category === activeCategory)
 
   return (
-    <section id="portfolio" className="min-h-[100dvh] flex flex-col justify-center py-6 sm:py-8 bg-slate-50/50">
+    <section id="portfolio" className="lg:min-h-[100dvh] flex flex-col justify-center py-10 sm:py-12 lg:py-10 bg-slate-50/50">
       <motion.div
         variants={sectionContainerVariants(shouldReduceMotion)}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-50px', amount: 0.12 }}
+        viewport={{ once: true, margin: '-50px', amount: 0.1 }}
         className="container-custom my-auto"
       >
         {/* Section Header */}
         <motion.div
           variants={fadeInUpVariants(shouldReduceMotion)}
-          className="flex flex-col items-center text-center gap-3 mb-4 sm:mb-6"
+          className="flex flex-col items-center text-center gap-3 mb-5 sm:mb-7"
         >
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold tracking-tight text-slate-900">
@@ -55,7 +55,7 @@ export default function Portfolio() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all ${
+                className={`rounded-full px-3 sm:px-3.5 py-1.5 text-xs font-semibold transition-all ${
                   activeCategory === cat
                     ? 'bg-slate-900 text-white shadow-md'
                     : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-slate-900'
@@ -76,7 +76,7 @@ export default function Portfolio() {
             animate="visible"
             exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -8 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
           >
             {filteredProjects.map((project) => (
               <motion.div

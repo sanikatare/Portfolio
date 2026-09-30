@@ -8,12 +8,12 @@ export default function Education() {
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <section id="education" className="min-h-[100dvh] flex flex-col justify-center py-6 sm:py-8 bg-slate-50/70 border-b border-slate-200/80">
+    <section id="education" className="lg:min-h-[100dvh] flex flex-col justify-center py-10 sm:py-12 lg:py-10 bg-slate-50/70 border-b border-slate-200/80">
       <motion.div
         variants={sectionContainerVariants(shouldReduceMotion)}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-50px', amount: 0.12 }}
+        viewport={{ once: true, margin: '-50px', amount: 0.1 }}
         className="container-custom my-auto"
       >
         {/* Section Header */}

@@ -12,7 +12,7 @@ import {
   User
 } from 'lucide-react'
 import { profile } from '../data/portfolio'
-import { GithubIcon, LinkedinIcon } from '../components/BrandIcons'
+import { GithubIcon, LinkedinIcon, MediumIcon } from '../components/BrandIcons'
 
 interface HeroProps {
   onOpenResume?: () => void
@@ -187,6 +187,17 @@ export default function Hero({ onOpenResume }: HeroProps) {
               >
                 <LinkedinIcon size={16} />
                 <span>LinkedIn</span>
+              </a>
+
+              <a
+                href={profile.mediumUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-white hover:bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-200 px-4 py-2.5 text-xs sm:text-sm font-semibold transition-all shadow-xs hover:-translate-y-0.5"
+                aria-label="Medium profile"
+              >
+                <MediumIcon size={16} />
+                <span>Medium</span>
               </a>
             </motion.div>
           </div>

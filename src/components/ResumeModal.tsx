@@ -171,32 +171,32 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           {/* Technical Skills */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200 pb-1 mb-2.5">
-              Technical Skills
+              Technical Skills &amp; Engineering Toolkit
             </h4>
             <div className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-xs">
               <div>
-                <span className="font-semibold text-slate-900">Languages:</span> C, C++, Python, SQL, JavaScript
+                <span className="font-semibold text-slate-900">Languages:</span> Python, TypeScript, JavaScript (ES6+), SQL, C, C++
               </div>
               <div>
-                <span className="font-semibold text-slate-900">Backend:</span> Python, FastAPI, Flask, REST APIs, JWT, bcrypt, RBAC, Node.js, Express.js
+                <span className="font-semibold text-slate-900">GenAI &amp; Multi-Agent RAG:</span> Google GenAI (Gemini 2.5 Flash), Multi-Agent Orchestration, HITL Gates, Hybrid RAG, LangChain, ChromaDB, BioBERT + PubMedQA, LayoutLMv3, Donut, SciBERT
               </div>
               <div>
-                <span className="font-semibold text-slate-900">Frontend:</span> React.js, JavaScript, Responsive UI, Figma-to-component, Tailwind CSS
+                <span className="font-semibold text-slate-900">ML &amp; Deep Learning:</span> TensorFlow, Keras, BiLSTM, LSTM, RNN, XGBoost, LightGBM, Random Forest, Scikit-Learn, Pandas, NumPy, NLP, Document OCR
               </div>
               <div>
-                <span className="font-semibold text-slate-900">Databases:</span> MongoDB (NoSQL), SQL, Data Modelling, Mongoose, Query Optimization
+                <span className="font-semibold text-slate-900">Backend &amp; APIs:</span> FastAPI, Pydantic v2, Node.js 22, Express.js, SQLAlchemy 2.0, Alembic, REST APIs, JWT, bcrypt, RBAC
               </div>
               <div>
-                <span className="font-semibold text-slate-900">AI / ML:</span> Machine Learning, Deep Learning, NLP, Transformers, TensorFlow, Scikit-Learn, LangChain, ChromaDB, RAG, GenAI, Pandas, NumPy
+                <span className="font-semibold text-slate-900">Databases:</span> PostgreSQL 16 (22-Table Core), MongoDB, Mongoose ODM, ChromaDB Vector Store, SQL
               </div>
               <div>
-                <span className="font-semibold text-slate-900">AI Dev Tools:</span> Cursor, Claude, ChatGPT, GitHub Copilot workflows, Antigravity, Qoder
+                <span className="font-semibold text-slate-900">Frontend:</span> React 19, React.js, TypeScript, Tailwind CSS v4, Vite, React Router DOM, Axios, Chart.js
               </div>
               <div>
-                <span className="font-semibold text-slate-900">Core CS:</span> Data Structures & Algorithms, Operating Systems, DBMS, OOP, Software Engineering, Agile/SDLC
+                <span className="font-semibold text-slate-900">Cloud, DevOps &amp; Tools:</span> Docker, Docker Compose, Nginx, Render, Vercel, AWS Cloud Practitioner, Git, GitHub, Postman, pytest, Figma, Canva
               </div>
               <div>
-                <span className="font-semibold text-slate-900">Tools & Cloud:</span> Git, GitHub, Postman, VS Code, AWS Cloud Practitioner (certified)
+                <span className="font-semibold text-slate-900">Core CS:</span> Data Structures &amp; Algorithms, Operating Systems, DBMS, OOP, Software Engineering, Agile/Scrum
               </div>
             </div>
           </div>
@@ -282,39 +282,21 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               <div>
                 <div className="flex flex-wrap items-baseline justify-between">
                   <span className="font-bold text-slate-900">
-                    PawPrints — Full-Stack Pet Health Platform
+                    1. Digital Twin (Vehicle Brain) — 8-Phase Automotive AI Platform
                   </span>
-                  <span className="text-slate-500 font-mono">MERN Stack (React, Node.js, Express.js, MongoDB)</span>
+                  <span className="text-slate-500 font-mono">Python, FastAPI, React.js, LangChain, ChromaDB, XGBoost, Docker</span>
                 </div>
-                <ul className="list-disc pl-4 mt-1 space-y-0.5 text-slate-700">
-                  <li>Developed a full-stack application across 6+ core modules (profiles, medical records, vaccination tracking, appointments, diagnosis history, community interactions).</li>
-                  <li>Designed and implemented 15+ REST APIs and CRUD operations across 6 MongoDB collections.</li>
-                  <li>Built secure authentication and authorization with JWT, bcrypt, protected routes, and role-based access control for 2 user roles.</li>
-                  <li>Responsive React.js frontend integrated with backend services; validated with Postman and Mongoose.</li>
-                </ul>
+                <p className="mt-1 text-slate-700">
+                  Unified 8-phase vehicle telemetry, anomaly detection, predictive RUL estimation (XGBoost/LightGBM), and OBD-II RAG diagnostics dashboard with Docker Compose &amp; Nginx gateway.
+                </p>
               </div>
 
               <div>
                 <div className="flex flex-wrap items-baseline justify-between">
                   <span className="font-bold text-slate-900">
-                    AI-Based LiFi-WiFi Intelligent Handover System
+                    2. GenAI (VedaWise) — Explainable Hybrid RAG System
                   </span>
-                  <span className="text-brand-600 font-semibold">Patent Application Filed</span>
-                </div>
-                <p className="text-slate-500 font-mono text-[11px]">Deep Learning, LSTM, Transformers, Python</p>
-                <ul className="list-disc pl-4 mt-1 space-y-0.5 text-slate-700">
-                  <li>Predictive network-automation system using LSTM and Transformer models to optimize LiFi-WiFi handover decisions.</li>
-                  <li>Achieved ~90% prediction accuracy through feature engineering, model tuning, and performance testing.</li>
-                  <li>Patent application officially filed for the intelligent handover architecture.</li>
-                </ul>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap items-baseline justify-between">
-                  <span className="font-bold text-slate-900">
-                    GenAI (VedaWise) — Explainable Hybrid RAG System
-                  </span>
-                  <span className="text-slate-500 font-mono">Python, Hybrid RAG, LLMs, Vector Search, FastAPI</span>
+                  <span className="text-slate-500 font-mono">TypeScript, React.js, Python, Hybrid RAG, LLMs, FastAPI</span>
                 </div>
                 <p className="mt-1 text-slate-700">
                   Explainable AI platform for life-oriented knowledge discovery from the Rig Veda across 4 explicit epistemic layers with hybrid semantic + lexical retrieval and citation verification.
@@ -324,9 +306,9 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               <div>
                 <div className="flex flex-wrap items-baseline justify-between">
                   <span className="font-bold text-slate-900">
-                    ElectroFine — Smart E-Waste Recycling &amp; Collector Tracking
+                    3. ElectroFine — Smart E-Waste Recycling &amp; Collector Tracking
                   </span>
-                  <span className="text-slate-500 font-mono">Next.js, TypeScript, Prisma, Tailwind CSS</span>
+                  <span className="text-slate-500 font-mono">TypeScript, React.js, Node.js, MongoDB, Mongoose, Tailwind CSS</span>
                 </div>
                 <p className="mt-1 text-slate-700">
                   Modern e-waste disposal platform with smart pickup scheduling, live collector tracking, and a dynamic fair-payout valuation engine.
@@ -336,9 +318,33 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               <div>
                 <div className="flex flex-wrap items-baseline justify-between">
                   <span className="font-bold text-slate-900">
-                    Hinglish Sentiment Analysis — Comparative Deep Learning
+                    4. Home IQ — Autonomous Household Intelligence &amp; Multi-Agent Platform
                   </span>
-                  <span className="text-slate-500 font-mono">Python, BiLSTM, LSTM, RNN, TensorFlow</span>
+                  <span className="text-slate-500 font-mono">React 19, TypeScript, FastAPI, SQLAlchemy 2.0, PostgreSQL, Gemini 2.5, BioBERT</span>
+                </div>
+                <p className="mt-1 text-slate-700">
+                  Policy-governed household operating system unifying 8 household domains over a 22-table relational core, multi-agent orchestrator with HITL approval gates, and BioBERT + PubMedQA (99.7% F1) clinical lab analysis.
+                </p>
+              </div>
+
+              <div>
+                <div className="flex flex-wrap items-baseline justify-between">
+                  <span className="font-bold text-slate-900">
+                    5. PawPrints — Full-Stack Pet Health Monitoring &amp; Diagnosis System
+                  </span>
+                  <span className="text-slate-500 font-mono">MERN Stack (React.js, Node.js, Express.js, MongoDB, JWT, bcrypt)</span>
+                </div>
+                <p className="mt-1 text-slate-700">
+                  Full-stack healthcare platform across 6+ core modules and 15+ REST APIs with symptom-based disease prediction, vaccination tracking, and RBAC security.
+                </p>
+              </div>
+
+              <div>
+                <div className="flex flex-wrap items-baseline justify-between">
+                  <span className="font-bold text-slate-900">
+                    6. Hinglish Sentiment Analysis — Comparative Deep Learning
+                  </span>
+                  <span className="text-slate-500 font-mono">Python, BiLSTM, LSTM, RNN, TensorFlow, Keras</span>
                 </div>
                 <p className="mt-1 text-slate-700">
                   Benchmarked RNN, LSTM, and BiLSTM models on code-mixed Hindi-English social media text, achieving 94.86% accuracy with Bidirectional LSTM.

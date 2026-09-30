@@ -39,7 +39,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="min-h-[100dvh] flex flex-col justify-center py-6 sm:py-8 relative overflow-hidden">
+    <section id="contact" className="lg:min-h-[100dvh] flex flex-col justify-center py-10 sm:py-12 lg:py-10 relative overflow-hidden">
       <div className="container-custom my-auto">
         {/* Main Clean Light Card */}
         <motion.div
