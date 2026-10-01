@@ -9,7 +9,7 @@ export default function Certifications() {
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <section id="certifications" className="lg:min-h-[100dvh] flex flex-col justify-center py-10 sm:py-12 lg:py-10 bg-slate-50/60 border-t border-slate-200/80">
+    <section id="certifications" className="lg:min-h-[100dvh] flex flex-col justify-center py-10 sm:py-12 lg:py-10 bg-slate-50/60">
       <motion.div
         variants={sectionContainerVariants(shouldReduceMotion)}
         initial="hidden"

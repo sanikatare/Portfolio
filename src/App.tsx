@@ -10,6 +10,16 @@ import Education from './sections/Education'
 import ContactSection from './sections/ContactSection'
 import Certifications from './sections/Certifications'
 
+function SectionDivider() {
+  return (
+    <div className="relative py-1 bg-transparent overflow-hidden" aria-hidden="true">
+      <div className="container-custom">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-brand-400/40 to-transparent dark:via-brand-500/30" />
+      </div>
+    </div>
+  )
+}
+
 export default function App() {
   const [resumeOpen, setResumeOpen] = useState(false)
   const [showBackToTop, setShowBackToTop] = useState(false)
@@ -41,20 +51,32 @@ export default function App() {
         {/* Landing Page with All Navigation & Actions right on the hero */}
         <Hero onOpenResume={() => setResumeOpen(true)} />
 
+        <SectionDivider />
+
         {/* Dedicated Skills Section */}
         <Skills />
+
+        <SectionDivider />
 
         {/* "My Work & Leadership Experience" with Timeline & Official Logos */}
         <Experience />
 
+        <SectionDivider />
+
         {/* "Lets have a look at my Portfolio" with Filter Tabs & Browser Mockups */}
         <Portfolio />
+
+        <SectionDivider />
 
         {/* Dedicated "My Education" section with PCCOE and DAV Logos */}
         <Education />
 
+        <SectionDivider />
+
         {/* "Have an Awesome Project Idea? Let's Discuss" Contact Card */}
         <ContactSection />
+
+        <SectionDivider />
 
         {/* "From my Certifications & Insights" */}
         <Certifications />

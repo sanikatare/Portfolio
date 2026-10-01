@@ -14,7 +14,7 @@ export default function Experience() {
   }
 
   return (
-    <section id="experience" className="lg:min-h-[100dvh] flex flex-col justify-center py-10 sm:py-12 lg:py-10 bg-slate-50/60 border-y border-slate-200/80">
+    <section id="experience" className="lg:min-h-[100dvh] flex flex-col justify-center py-10 sm:py-12 lg:py-10 bg-slate-50/60">
       <motion.div
         variants={sectionContainerVariants(shouldReduceMotion)}
         initial="hidden"

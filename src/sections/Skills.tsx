@@ -86,7 +86,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="lg:min-h-[100dvh] flex flex-col justify-center py-10 sm:py-12 lg:py-10 bg-gradient-to-b from-brand-50/50 via-white to-brand-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 border-t border-brand-100/80 dark:border-brand-900/30"
+      className="lg:min-h-[100dvh] flex flex-col justify-center py-10 sm:py-12 lg:py-10 bg-gradient-to-b from-brand-50/40 via-white to-brand-50/25 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"
     >
       <motion.div
         variants={sectionContainerVariants(shouldReduceMotion)}

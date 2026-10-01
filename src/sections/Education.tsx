@@ -8,7 +8,7 @@ export default function Education() {
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <section id="education" className="lg:min-h-[100dvh] flex flex-col justify-center py-10 sm:py-12 lg:py-10 bg-slate-50/70 border-b border-slate-200/80">
+    <section id="education" className="lg:min-h-[100dvh] flex flex-col justify-center py-10 sm:py-12 lg:py-10 bg-slate-50/70">
       <motion.div
         variants={sectionContainerVariants(shouldReduceMotion)}
         initial="hidden"
