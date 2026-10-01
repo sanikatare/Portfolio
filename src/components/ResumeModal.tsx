@@ -184,10 +184,10 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 <span className="font-semibold text-slate-900">ML &amp; Deep Learning:</span> TensorFlow, Keras, BiLSTM, LSTM, RNN, XGBoost, LightGBM, Random Forest, Scikit-Learn, Pandas, NumPy, NLP, Document OCR
               </div>
               <div>
-                <span className="font-semibold text-slate-900">Backend &amp; APIs:</span> FastAPI, Pydantic v2, Node.js 22, Express.js, SQLAlchemy 2.0, Alembic, REST APIs, JWT, bcrypt, RBAC
+                <span className="font-semibold text-slate-900">Backend &amp; Services:</span> FastAPI, Pydantic v2, Node.js 22, Express.js, REST APIs, Microservices, gRPC &amp; Protobuf, RabbitMQ, WebSockets, Uvicorn, Node-Cron
               </div>
               <div>
-                <span className="font-semibold text-slate-900">Databases:</span> PostgreSQL 16 (22-Table Core), MongoDB, Mongoose ODM, ChromaDB Vector Store, SQL
+                <span className="font-semibold text-slate-900">Databases:</span> SQL &amp; AWS RDS, PostgreSQL 16 &amp; pgvector, MongoDB, Mongoose ODM, ChromaDB &amp; FAISS Vector Store
               </div>
               <div>
                 <span className="font-semibold text-slate-900">Frontend:</span> React 19, React.js, TypeScript, Tailwind CSS v4, Vite, React Router DOM, Axios, Chart.js

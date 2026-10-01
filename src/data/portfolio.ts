@@ -593,17 +593,14 @@ export const certifications: CertificationItem[] = [
 export const technicalSkills = {
   backend: [
     'Python',
-    'FastAPI',
+    'FastAPI & Uvicorn',
     'Pydantic v2',
-    'SQLAlchemy 2.0',
-    'Alembic Migrations',
-    'Node.js 22',
-    'Express.js',
-    'REST API Design',
-    'JWT Authentication',
-    'bcrypt',
-    'Role-Based Access Control (RBAC)',
-    'Policy & Permission Sandboxing',
+    'Node.js 22 & Express.js',
+    'RESTful APIs & Microservices',
+    'gRPC & Protobuf',
+    'RabbitMQ (aio-pika) & Event Bus',
+    'WebSockets',
+    'Node-Cron & Background Workers',
   ],
   frontend: [
     'React 19 / React.js',
@@ -611,20 +608,16 @@ export const technicalSkills = {
     'JavaScript (ES6+)',
     'Tailwind CSS v4',
     'Vite',
-    'React Router DOM',
-    'Axios',
-    'Chart.js',
     'Responsive UI Development',
     'Figma-to-Component',
   ],
   databases: [
-    'PostgreSQL 16',
+    'SQL & AWS RDS',
+    'PostgreSQL 16 & pgvector',
     'MongoDB (NoSQL)',
     'Mongoose ODM',
-    'ChromaDB Vector Store',
-    'SQL / Relational Modelling',
-    'Query Optimization',
-    'Aggregation Pipelines',
+    'ChromaDB & FAISS Vector Store',
+    'Relational Modelling & Query Optimization',
   ],
   aiMl: [
     'Google GenAI (Gemini 2.5 Flash)',
@@ -793,122 +786,9 @@ export const deliveryCaseStudies: DeliveryCaseStudy[] = [
   },
 ]
 
-export function getTechBadgeStyle(tech: string): { badge: string; dot: string } {
-  const normalized = tech.toLowerCase()
-
-  if (normalized.includes('python')) {
-    return {
-      badge: 'bg-blue-50 text-blue-700 border-blue-200/90 dark:bg-blue-950/60 dark:text-blue-300 dark:border-blue-800/60',
-      dot: 'bg-blue-500 dark:bg-blue-400',
-    }
-  }
-  if (
-    normalized.includes('fastapi') ||
-    normalized.includes('streamlit') ||
-    normalized.includes('geopandas') ||
-    normalized.includes('folium')
-  ) {
-    return {
-      badge: 'bg-teal-50 text-teal-700 border-teal-200/90 dark:bg-teal-950/60 dark:text-teal-300 dark:border-teal-800/60',
-      dot: 'bg-teal-500 dark:bg-teal-400',
-    }
-  }
-  if (normalized.includes('react') || normalized.includes('tailwind') || normalized.includes('vite')) {
-    return {
-      badge: 'bg-sky-50 text-sky-700 border-sky-200/90 dark:bg-sky-950/60 dark:text-sky-300 dark:border-sky-800/60',
-      dot: 'bg-sky-500 dark:bg-sky-400',
-    }
-  }
-  if (
-    normalized.includes('next.js') ||
-    normalized.includes('typescript') ||
-    normalized.includes('postgresql') ||
-    normalized.includes('postgres') ||
-    normalized.includes('sql')
-  ) {
-    return {
-      badge: 'bg-indigo-50 text-indigo-700 border-indigo-200/90 dark:bg-indigo-950/60 dark:text-indigo-300 dark:border-indigo-800/60',
-      dot: 'bg-indigo-500 dark:bg-indigo-400',
-    }
-  }
-  if (
-    normalized.includes('langchain') ||
-    normalized.includes('llm') ||
-    normalized.includes('chromadb') ||
-    normalized.includes('rag') ||
-    normalized.includes('gemini') ||
-    normalized.includes('genai') ||
-    normalized.includes('vector')
-  ) {
-    return {
-      badge: 'bg-violet-50 text-violet-700 border-violet-200/90 dark:bg-violet-950/60 dark:text-violet-300 dark:border-violet-800/60',
-      dot: 'bg-violet-500 dark:bg-violet-400',
-    }
-  }
-  if (
-    normalized.includes('node') ||
-    normalized.includes('express') ||
-    normalized.includes('mongodb') ||
-    normalized.includes('mongoose') ||
-    normalized.includes('prisma') ||
-    normalized.includes('rest') ||
-    normalized.includes('docker')
-  ) {
-    return {
-      badge: 'bg-emerald-50 text-emerald-700 border-emerald-200/90 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800/60',
-      dot: 'bg-emerald-500 dark:bg-emerald-400',
-    }
-  }
-  if (
-    normalized.includes('grpc') ||
-    normalized.includes('rabbitmq') ||
-    normalized.includes('websocket') ||
-    normalized.includes('webrtc') ||
-    normalized.includes('biobert') ||
-    normalized.includes('layoutlm')
-  ) {
-    return {
-      badge: 'bg-purple-50 text-purple-700 border-purple-200/90 dark:bg-purple-950/60 dark:text-purple-300 dark:border-purple-800/60',
-      dot: 'bg-purple-500 dark:bg-purple-400',
-    }
-  }
-  if (
-    normalized.includes('tensorflow') ||
-    normalized.includes('keras') ||
-    normalized.includes('lstm') ||
-    normalized.includes('rnn') ||
-    normalized.includes('nlp') ||
-    normalized.includes('ocr') ||
-    normalized.includes('tf-idf')
-  ) {
-    return {
-      badge: 'bg-rose-50 text-rose-700 border-rose-200/90 dark:bg-rose-950/60 dark:text-rose-300 dark:border-rose-800/60',
-      dot: 'bg-rose-500 dark:bg-rose-400',
-    }
-  }
-  if (
-    normalized.includes('xgboost') ||
-    normalized.includes('lightgbm') ||
-    normalized.includes('scikit') ||
-    normalized.includes('random forest') ||
-    normalized.includes('regression') ||
-    normalized.includes('machine learning') ||
-    normalized.includes('scheduling')
-  ) {
-    return {
-      badge: 'bg-amber-50 text-amber-800 border-amber-200/90 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-800/60',
-      dot: 'bg-amber-500 dark:bg-amber-400',
-    }
-  }
-  if (normalized.includes('jwt') || normalized.includes('bcrypt')) {
-    return {
-      badge: 'bg-orange-50 text-orange-700 border-orange-200/90 dark:bg-orange-950/60 dark:text-orange-300 dark:border-orange-800/60',
-      dot: 'bg-orange-500 dark:bg-orange-400',
-    }
-  }
-
+export function getTechBadgeStyle(_tech: string): { badge: string; dot: string } {
   return {
-    badge: 'bg-slate-100 text-slate-700 border-slate-200/90 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700',
-    dot: 'bg-slate-500 dark:bg-slate-400',
+    badge: 'bg-brand-50 text-brand-700 border-brand-200/90 dark:bg-brand-950/60 dark:text-brand-300 dark:border-brand-800/60',
+    dot: 'bg-brand-500 dark:bg-brand-400',
   }
 }

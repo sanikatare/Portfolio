@@ -19,12 +19,9 @@ const skillGroups: SkillGroup[] = [
     skills: [
       'Google GenAI (Gemini 2.5 Flash)',
       'Multi-Agent Orchestration',
-      'Human-in-the-Loop (HITL) Gates',
       'Hybrid & Grounded RAG',
       'LangChain & ChromaDB',
       'Vector Search & Embeddings',
-      'BioBERT & PubMedQA (99.7% F1)',
-      'LayoutLMv3, Donut & SciBERT',
       'Explainable AI (4 Epistemic Layers)',
       'Document OCR & SHA-256 Dedup',
     ],
@@ -44,7 +41,6 @@ const skillGroups: SkillGroup[] = [
       'OBD-II Telemetry & Health Scoring',
       'Code-Mixed NLP & Tokenization',
       'Pandas, NumPy & Matplotlib',
-      'Golden Evaluation Benchmarks',
     ],
   },
   {
@@ -55,14 +51,14 @@ const skillGroups: SkillGroup[] = [
     skills: [
       'FastAPI & Pydantic v2',
       'Node.js 22 & Express.js',
-      'SQLAlchemy 2.0 & Alembic',
-      'PostgreSQL 16 (22-Table Core)',
+      'SQL & AWS RDS',
+      'PostgreSQL 16 & pgvector',
       'MongoDB & Mongoose ODM',
       'RESTful APIs & Microservices',
-      'JWT Auth & bcrypt Encryption',
-      'Role-Based Access Control (RBAC)',
-      '3-Tier Tool Sandboxing',
-      'Dynamic Valuation & Ledger Engines',
+      'gRPC & Protobuf',
+      'RabbitMQ & Async Event Bus',
+      'WebSockets & Uvicorn',
+      'Node-Cron & Background Workers',
     ],
   },
   {
@@ -74,7 +70,6 @@ const skillGroups: SkillGroup[] = [
       'React 19 & React.js',
       'TypeScript & JavaScript (ES6+)',
       'Tailwind CSS v4 & Vite',
-      'React Router DOM, Axios & Chart.js',
       'Docker, Docker Compose & Nginx',
       'Render Blueprints & Vercel',
       'AWS Cloud Practitioner',
@@ -89,7 +84,10 @@ export default function Skills() {
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <section id="skills" className="lg:min-h-[100dvh] flex flex-col justify-center py-10 sm:py-12 lg:py-10 bg-white border-t border-slate-100">
+    <section
+      id="skills"
+      className="lg:min-h-[100dvh] flex flex-col justify-center py-10 sm:py-12 lg:py-10 bg-gradient-to-b from-brand-50/50 via-white to-brand-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 border-t border-brand-100/80 dark:border-brand-900/30"
+    >
       <motion.div
         variants={sectionContainerVariants(shouldReduceMotion)}
         initial="hidden"
@@ -109,7 +107,7 @@ export default function Skills() {
             Core Skills &amp; <span className="text-brand-500">Engineering Toolkit</span>
           </h2>
           <p className="mt-2 text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto">
-            Production technologies, AI/ML models, and full-stack frameworks implemented across Digital Twin, VedaWise GenAI, ElectroFine, HomeIQ, PawPrints, and Hinglish NLP.
+            Production technologies, AI/ML models, and full-stack frameworks implemented across Digital Twin, VedaWise GenAI, ElectroFine, Home IQ, PawPrints, and Hinglish NLP.
           </p>
         </motion.div>
 
@@ -124,18 +122,18 @@ export default function Skills() {
               <motion.div
                 key={group.id}
                 variants={fadeInUpVariants(shouldReduceMotion)}
-                className="rounded-2xl bg-slate-50/70 border border-slate-200/80 p-4 sm:p-5 hover:border-brand-300 hover:shadow-md transition-all flex flex-col"
+                className="rounded-2xl border p-4 sm:p-5 shadow-xs hover:shadow-md transition-all flex flex-col bg-gradient-to-br from-brand-50/80 via-brand-50/30 to-white border-brand-200/90 hover:border-brand-400 hover:shadow-brand-500/10 dark:from-brand-950/50 dark:via-slate-900/80 dark:to-slate-900 dark:border-brand-800/60"
               >
                 {/* Category Header */}
-                <div className="flex items-center gap-2.5 mb-3.5">
-                  <div className="p-2 rounded-xl bg-white border border-slate-200 text-brand-600 shadow-xs shrink-0">
+                <div className="flex items-center gap-2.5 mb-3.5 pb-3 border-b border-brand-200/60 dark:border-brand-800/40">
+                  <div className="p-2 rounded-xl border shrink-0 bg-brand-500 text-white border-brand-500 shadow-sm shadow-brand-500/20">
                     <Icon className="h-4 w-4" />
                   </div>
                   <div className="min-w-0">
                     <h3 className="text-sm font-bold text-slate-900 leading-tight truncate">
                       {group.title}
                     </h3>
-                    <span className="text-[10px] font-semibold text-brand-600 block truncate mt-0.5">
+                    <span className="text-[10px] font-semibold block truncate mt-0.5 text-brand-600 dark:text-brand-400">
                       {group.badge}
                     </span>
                   </div>
@@ -146,8 +144,9 @@ export default function Skills() {
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="inline-flex items-center px-2.5 py-1 rounded-lg bg-white border border-slate-200/80 text-[11px] font-medium text-slate-700 hover:border-brand-300 hover:text-brand-600 transition-colors shadow-2xs"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-[11px] font-semibold transition-colors shadow-2xs bg-brand-50 border-brand-200/90 text-brand-700 hover:bg-brand-100/80 hover:border-brand-400 hover:text-brand-800 dark:bg-brand-950/50 dark:border-brand-800/60 dark:text-brand-300"
                     >
+                      <span className="h-1.5 w-1.5 rounded-full shrink-0 bg-brand-500" />
                       {skill}
                     </span>
                   ))}

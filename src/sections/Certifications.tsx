@@ -47,15 +47,7 @@ export default function Certifications() {
           variants={cardStaggerVariants(shouldReduceMotion)}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
         >
-          {certifications.slice(0, 4).map((cert, index) => {
-            const cardBgGradients = [
-              'from-slate-900 via-indigo-950 to-slate-900',
-              'from-emerald-950 via-teal-900 to-slate-900',
-              'from-slate-900 via-blue-950 to-slate-900',
-              'from-cyan-950 via-blue-950 to-slate-900',
-            ]
-            const bgGradient = cardBgGradients[index % cardBgGradients.length]
-
+          {certifications.slice(0, 4).map((cert) => {
             return (
               <motion.div
                 key={cert.id}
@@ -65,7 +57,7 @@ export default function Certifications() {
               >
                 <div>
                   {/* Card Visual Graphic Mockup */}
-                  <div className={`relative h-36 bg-gradient-to-br ${bgGradient} p-3.5 text-white flex flex-col justify-between overflow-hidden`}>
+                  <div className="relative h-36 bg-gradient-to-br from-slate-900 via-brand-900 to-slate-900 p-3.5 text-white flex flex-col justify-between overflow-hidden">
                     <div className="flex items-center justify-between text-[10px] font-mono">
                       <span className="bg-white/10 px-2 py-0.5 rounded text-brand-300">
                         {cert.date}
@@ -96,7 +88,7 @@ export default function Certifications() {
                       {cert.skills.map((skill, sIdx) => (
                         <span
                           key={sIdx}
-                          className="rounded-md bg-slate-100 px-2 py-0.5 text-[10px] sm:text-[11px] font-medium text-slate-700"
+                          className="rounded-md bg-brand-50 border border-brand-200/80 px-2 py-0.5 text-[10px] sm:text-[11px] font-medium text-brand-700"
                         >
                           {skill}
                         </span>
