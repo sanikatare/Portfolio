@@ -161,10 +161,10 @@ export default function Hero({ onOpenResume }: HeroProps) {
               {onOpenResume && (
                 <button
                   onClick={onOpenResume}
-                  className="inline-flex items-center gap-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white px-4.5 py-2.5 text-xs sm:text-sm font-semibold transition-all shadow-md hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 text-xs sm:text-sm font-semibold whitespace-nowrap transition-all shadow-md hover:-translate-y-0.5"
                 >
-                  <FileText className="h-4 w-4 text-brand-400" />
-                  <span>View Resume</span>
+                  <FileText className="h-4 w-4 text-brand-400 shrink-0" />
+                  <span className="whitespace-nowrap">View Resume</span>
                 </button>
               )}
 
