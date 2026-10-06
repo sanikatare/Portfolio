@@ -9,7 +9,8 @@ import {
   Award, 
   Mail, 
   FileText,
-  User
+  User,
+  Download
 } from 'lucide-react'
 import { profile } from '../data/portfolio'
 import { GithubIcon, LinkedinIcon, MediumIcon } from '../components/BrandIcons'
@@ -145,10 +146,10 @@ export default function Hero({ onOpenResume }: HeroProps) {
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold tracking-tight text-slate-900 leading-[1.15]">
                 I&apos;m <span className="text-brand-500 font-extrabold drop-shadow-xs">{profile.firstName}</span>,
                 <br />
-                <span className="text-slate-800">AI/ML &amp; Software Engineer</span>
+                <span className="text-slate-800">AI Software Engineer</span>
               </h1>
               <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm md:text-base text-slate-600 max-w-xl mx-auto md:mx-0 leading-relaxed font-normal">
-                Working on AI/ML tools and using my creative skills in building and designing high-impact products from concept to deployment.
+                Results-driven Software Engineer and Computer Engineering student building sustainable web applications, LLM Digital Twins, and grounded RAG systems.
               </p>
             </motion.div>
 
@@ -160,12 +161,22 @@ export default function Hero({ onOpenResume }: HeroProps) {
               {onOpenResume && (
                 <button
                   onClick={onOpenResume}
-                  className="inline-flex items-center gap-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all shadow-md hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white px-4.5 py-2.5 text-xs sm:text-sm font-semibold transition-all shadow-md hover:-translate-y-0.5"
                 >
                   <FileText className="h-4 w-4 text-brand-400" />
                   <span>View Resume</span>
                 </button>
               )}
+
+              <a
+                href="/Sanika_Tare_Resume.pdf"
+                download="Sanika_Tare_Resume.pdf"
+                className="inline-flex items-center gap-1.5 rounded-full bg-brand-500 hover:bg-brand-600 text-white px-4 py-2.5 text-xs sm:text-sm font-semibold transition-all shadow-md hover:-translate-y-0.5"
+                title="Download Sanika Tare Resume (PDF)"
+              >
+                <Download className="h-4 w-4" />
+                <span>Download CV</span>
+              </a>
 
               <a
                 href={profile.githubUrl}

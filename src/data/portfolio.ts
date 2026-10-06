@@ -15,6 +15,8 @@ export interface ProfileData {
   githubUsername: string
   linkedinUrl: string
   mediumUrl: string
+  portfolioUrl: string
+  resumeUrl: string
   avatarUrl: string
   summary: string
   shortSummary: string
@@ -32,37 +34,39 @@ export interface ProfileData {
 export const profile: ProfileData = {
   name: 'Sanika Tare',
   firstName: 'Sanika',
-  title: 'AI/ML & Software Engineer',
+  title: 'AI Software Engineer',
   roles: [
-    'AI/ML Engineer',
-    'Backend Engineer (Python & FastAPI)',
-    'Frontend Developer (React)',
-    'Digital Twin & RAG Researcher',
+    'AI Software Engineer',
+    'AI/ML Engineering Intern (Tata Technologies)',
+    'Full-Stack Developer (FastAPI & React 19)',
+    'Multi-Agent & RAG Architect',
   ],
   location: 'Pune, Maharashtra, India',
-  phone: '+91-72492 55572',
+  phone: '+91-7249255572',
   email: 'sanikatare.work@gmail.com',
   githubUrl: 'https://github.com/sanikatare',
   githubUsername: 'sanikatare',
   linkedinUrl: 'https://linkedin.com/in/sanikatare',
   mediumUrl: 'https://medium.com/@sanikatare.work',
+  portfolioUrl: 'https://portfolio-three-bay-okimzvh4sn.vercel.app',
+  resumeUrl: '/Sanika_Tare_Resume.pdf',
   avatarUrl: '/me.png',
   quote:
-    'Working on AI/ML tools and using my creative skills in building and designing high-impact products from research to production.',
+    'Results-driven Software Engineer and Computer Engineering student who builds sustainable, efficient web applications with exceptional user interfaces.',
   shortSummary:
-    'Computer Engineering undergraduate working on AI/ML tools, creative product building and design, and full-stack software development.',
+    'Results-driven AI Software Engineer and Computer Engineering student (B.E., 2027) building sustainable, efficient web applications, LLM Digital Twins, and grounded RAG systems.',
   summary:
-    'Computer Engineering undergraduate at PCCOE Pune with hands-on experience developing full-stack MERN applications, NLP systems, and AI-powered automation solutions. Strong foundation in Data Structures & Algorithms, Operating Systems, DBMS, Object-Oriented Programming, and Software Engineering. Skilled in building REST APIs, implementing CRUD operations, debugging applications, and developing scalable software systems using Python, C++, Java, SQL, and JavaScript.',
+    'Results-driven Software Engineer and Computer Engineering student (B.E., 2027) who builds sustainable, efficient web applications with exceptional user interfaces. Strong in full-stack development, system design, and data-driven problem solving, with measurable results across an industry internship and two benchmarked projects. Collaborative leader who takes ownership and delivers reliable, user-focused solutions.',
   education: {
-    institution: 'Pimpri Chinchwad College of Engineering (PCCOE)',
-    degree: 'Bachelor of Technology – Computer Engineering',
+    institution: 'Pimpri Chinchwad College of Engineering | Pune, Maharashtra',
+    degree: 'Bachelor of Engineering in Computer Engineering',
     minor: 'Generative AI Tools & Techniques',
-    period: '2023 – 2027',
+    period: '2023 – 2027 (Expected)',
     location: 'Pune, Maharashtra',
     highlights: [
-      'Minor in Generative AI Tools & Techniques',
-      'Strong CS fundamentals in DSA, Operating Systems, DBMS & OOP',
-      'Active participant in Smart India Hackathon & Google GenAI Exchange',
+      'Coursework: AI, ML, DSA, DBMS, Networks, Distributed Systems',
+      'Filed patent for ML-based predictive Li-Fi/Wi-Fi handover system using smartphone motion sensors',
+      'Presented AI/ML predictive-systems research at KSHITIJ 2026',
     ],
   },
 }
@@ -544,49 +548,58 @@ export interface CertificationItem {
 
 export const certifications: CertificationItem[] = [
   {
+    id: 'cert-databricks',
+    title: 'Generative AI Fundamentals',
+    issuer: 'Databricks',
+    credential: 'LLMs & GenAI Solution Architecture',
+    date: 'Certified',
+    skills: ['Generative AI', 'LLMs', 'Prompt Engineering', 'Vector Search'],
+    icon: 'ml',
+  },
+  {
     id: 'cert-aws',
-    title: 'AWS Certified Cloud Practitioner Essentials',
-    issuer: 'Amazon Web Services (AWS)',
+    title: 'Cloud Practitioner Essentials',
+    issuer: 'AWS',
     credential: 'AWS Cloud Fundamentals & Infrastructure',
     date: 'Certified',
     skills: ['Cloud Architecture', 'AWS IAM', 'EC2', 'S3', 'Cloud Security'],
     icon: 'aws',
   },
   {
-    id: 'cert-patent',
-    title: 'Patent Application Filed: LiFi-WiFi Handover System',
-    issuer: 'Indian Patent Office',
-    credential: 'AI-Based Predictive Network Handover',
-    date: 'Officially Filed',
-    skills: ['Deep Learning', 'Transformers', 'LSTM', 'Network Telemetry'],
-    icon: 'patent',
-  },
-  {
-    id: 'cert-iit-guwahati',
-    title: 'Data Science & Machine Learning',
-    issuer: 'IIT Guwahati',
-    credential: 'Advanced ML & Data Science Specialization',
-    date: 'Certified',
-    skills: ['Supervised Learning', 'Feature Engineering', 'Model Evaluation', 'Python'],
+    id: 'cert-ai-engineer',
+    title: 'The AI Engineer Course',
+    issuer: 'Bootcamp',
+    credential: 'Production AI Systems & LLM Workflows',
+    date: 'Completed',
+    skills: ['AI Agents', 'LangChain', 'FastAPI', 'RAG Pipelines'],
     icon: 'ml',
   },
   {
-    id: 'cert-abdul-bari',
-    title: 'Mastering Data Structures & Algorithms using C & C++',
-    issuer: 'Abdul Bari / Udemy',
-    credential: 'Comprehensive CS & Algorithm Mastery',
+    id: 'cert-aicte',
+    title: 'Generative AI Virtual Internship',
+    issuer: 'AICTE',
+    credential: 'Applied Generative AI & Automation',
     date: 'Completed',
-    skills: ['DSA', 'Time Complexity', 'Dynamic Programming', 'Trees & Graphs'],
+    skills: ['GenAI Tools', 'Python', 'Embeddings', 'Transformers'],
+    icon: 'ml',
+  },
+  {
+    id: 'cert-dsa',
+    title: 'Data Structures using C and C++',
+    issuer: 'Mastery Course',
+    credential: 'Core Computer Science & Algorithms',
+    date: 'Completed',
+    skills: ['DSA', 'Pointers', 'Dynamic Programming', 'Complexity Analysis'],
     icon: 'dsa',
   },
   {
-    id: 'cert-web-dev',
-    title: 'Complete Web Development Bootcamp',
-    issuer: 'Udemy',
-    credential: 'Full-Stack MERN & Modern Web Architecture',
+    id: 'cert-iitg',
+    title: 'Summer Analytics',
+    issuer: 'IIT Guwahati',
+    credential: 'Data Science & Machine Learning Specialization',
     date: 'Completed',
-    skills: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs'],
-    icon: 'web',
+    skills: ['Supervised Learning', 'Feature Engineering', 'Model Evaluation', 'Python'],
+    icon: 'ml',
   },
 ]
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
-import { X, Download, FileText, Check, Copy, ExternalLink, Mail, Phone, MapPin } from 'lucide-react'
+import { X, Download, FileText, Check, Copy, ExternalLink, Printer, Sparkles, Eye } from 'lucide-react'
 import { profile } from '../data/portfolio'
 
 interface ResumeModalProps {
@@ -9,12 +9,12 @@ interface ResumeModalProps {
 }
 
 export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
-  const [activeTab, setActiveTab] = useState<'aiml' | 'fullstack'>('aiml')
+  const [viewMode, setViewMode] = useState<'sheet' | 'pdf'>('sheet')
   const [copied, setCopied] = useState(false)
   const shouldReduceMotion = useReducedMotion()
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.origin)
+    navigator.clipboard.writeText(`${window.location.origin}/Sanika_Tare_Resume.pdf`)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -30,427 +30,363 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/70 backdrop-blur-sm"
+          transition={{ duration: 0.22, ease: 'easeOut' }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 sm:py-6 overflow-y-auto bg-black/75 backdrop-blur-sm"
           onClick={onClose}
         >
           <motion.div
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16, scale: shouldReduceMotion ? 1 : 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: shouldReduceMotion ? 0 : 12, scale: shouldReduceMotion ? 1 : 0.98 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-full max-w-4xl max-h-[92vh] flex flex-col rounded-3xl bg-white shadow-2xl border border-slate-200 overflow-hidden"
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="relative w-full max-w-4xl max-h-[94vh] flex flex-col rounded-2xl sm:rounded-3xl bg-slate-100 shadow-2xl border border-slate-300 overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-        {/* Header Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 bg-slate-50/80 px-6 py-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600 font-bold">
-              <FileText className="h-5 w-5 text-brand-500" />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-slate-900">Sanika Tare — Verified Resume</h3>
-              <p className="text-xs text-slate-500">Official CV Data · Pune, Maharashtra</p>
-            </div>
-          </div>
+            {/* Top Toolbar */}
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 bg-white px-4 sm:px-6 py-3.5 print:hidden">
+              <div className="flex items-center gap-2.5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600 font-bold">
+                  <FileText className="h-5 w-5 text-brand-500" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-none">
+                      Sanika Tare — Official Resume
+                    </h3>
+                    <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700 border border-emerald-200">
+                      <Sparkles className="h-2.5 w-2.5" />
+                      <span>Latest 2026/2027</span>
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-slate-500 mt-0.5">
+                    AI Software Engineer · PCCOE Pune · Tata Technologies Intern
+                  </p>
+                </div>
+              </div>
 
-          <div className="flex items-center gap-2">
-            {/* Tab switchers */}
-            <div className="flex rounded-full bg-slate-200/80 p-1 text-xs font-semibold">
-              <button
-                onClick={() => setActiveTab('aiml')}
-                className={`rounded-full px-3.5 py-1.5 transition-all ${
-                  activeTab === 'aiml'
-                    ? 'bg-brand-500 text-white shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                AI/ML Engineer CV
-              </button>
-              <button
-                onClick={() => setActiveTab('fullstack')}
-                className={`rounded-full px-3.5 py-1.5 transition-all ${
-                  activeTab === 'fullstack'
-                    ? 'bg-brand-500 text-white shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Backend & Full-Stack CV
-              </button>
-            </div>
+              {/* Action Buttons */}
+              <div className="flex items-center gap-2">
+                {/* View Mode Toggle */}
+                <div className="flex rounded-lg bg-slate-100 p-0.5 text-xs font-semibold border border-slate-200">
+                  <button
+                    onClick={() => setViewMode('sheet')}
+                    className={`inline-flex items-center gap-1 rounded-md px-2.5 py-1 transition-all ${
+                      viewMode === 'sheet'
+                        ? 'bg-white text-brand-600 shadow-xs'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                    title="Interactive formatted sheet"
+                  >
+                    <FileText className="h-3 w-3" />
+                    <span>Formatted</span>
+                  </button>
+                  <button
+                    onClick={() => setViewMode('pdf')}
+                    className={`inline-flex items-center gap-1 rounded-md px-2.5 py-1 transition-all ${
+                      viewMode === 'pdf'
+                        ? 'bg-white text-brand-600 shadow-xs'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                    title="Direct PDF file preview"
+                  >
+                    <Eye className="h-3 w-3" />
+                    <span>PDF Viewer</span>
+                  </button>
+                </div>
 
-            <button
-              onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900"
-              title="Print / Save as PDF"
-            >
-              <Download className="h-3.5 w-3.5" />
-              <span>Print/PDF</span>
-            </button>
+                {/* Direct Download Button */}
+                <a
+                  href="/Sanika_Tare_Resume.pdf"
+                  download="Sanika_Tare_Resume.pdf"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-brand-500 hover:bg-brand-600 text-white px-3.5 py-1.5 text-xs font-bold shadow-sm transition-all hover:scale-105"
+                  title="Download Sanika Tare Resume PDF"
+                >
+                  <Download className="h-3.5 w-3.5" />
+                  <span>Download PDF</span>
+                </a>
 
-            <button
-              onClick={onClose}
-              className="rounded-full p-2 text-slate-400 hover:bg-slate-200 hover:text-slate-700"
-              aria-label="Close"
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
+                {/* Print Button */}
+                <button
+                  onClick={handlePrint}
+                  className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-slate-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+                  title="Print / Save as PDF"
+                >
+                  <Printer className="h-3.5 w-3.5" />
+                  <span>Print</span>
+                </button>
 
-        {/* Content Area with opacity transition when switching CV tabs */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -6 }}
-            transition={{ duration: 0.22, ease: 'easeOut' }}
-            className="overflow-y-auto p-6 sm:p-8 space-y-6 text-sm text-slate-700 leading-relaxed font-sans"
-          >
-          {/* Header Contact */}
-          <div className="border-b border-slate-200 pb-5 text-center">
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-              SANIKA TARE
-            </h1>
-            <p className="mt-1 text-base font-semibold text-brand-600">
-              {activeTab === 'aiml'
-                ? 'AI/ML Engineer · Applied Deep Learning & NLP'
-                : 'AI Software Engineer — Backend (Python) | Frontend (React)'}
-            </p>
-            <div className="mt-2.5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-slate-600">
-              <span className="flex items-center gap-1">
-                <MapPin className="h-3.5 w-3.5 text-brand-500" />
-                Pune, Maharashtra, India
-              </span>
-              <span>·</span>
-              <a href={`tel:${profile.phone}`} className="flex items-center gap-1 hover:text-brand-600">
-                <Phone className="h-3.5 w-3.5 text-brand-500" />
-                {profile.phone}
-              </a>
-              <span>·</span>
-              <a href={`mailto:${profile.email}`} className="flex items-center gap-1 hover:text-brand-600">
-                <Mail className="h-3.5 w-3.5 text-brand-500" />
-                {profile.email}
-              </a>
-              <span>·</span>
-              <a
-                href={profile.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1 text-brand-600 hover:underline"
-              >
-                github.com/sanikatare
-                <ExternalLink className="h-3 w-3" />
-              </a>
-              <span>·</span>
-              <a
-                href={profile.linkedinUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1 text-brand-600 hover:underline"
-              >
-                linkedin.com/in/sanikatare
-                <ExternalLink className="h-3 w-3" />
-              </a>
-            </div>
-          </div>
-
-          {/* Professional Summary */}
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200 pb-1 mb-2">
-              Summary
-            </h4>
-            <p className="text-slate-700 text-justify">
-              {activeTab === 'aiml'
-                ? 'Computer Engineering undergraduate with hands-on experience developing full-stack MERN applications, NLP systems, and AI-powered automation solutions. Strong foundation in Data Structures & Algorithms, Operating Systems, DBMS, Object-Oriented Programming, and Software Engineering. Skilled in building REST APIs, implementing CRUD operations, debugging applications, and developing scalable software systems using C++, Java, Python, SQL, and JavaScript.'
-                : 'Computer Engineering undergraduate with hands-on experience building Python backend services (FastAPI), React front-end interfaces, and REST APIs across full-stack MERN and AI-driven projects. Comfortable across SQL/NoSQL data modelling, authentication and secure data handling, and modern AI-assisted development workflows using Cursor, Claude, ChatGPT, and Antigravity. Strong CS fundamentals (DSA, OS, DBMS, OOP, Software Engineering), an ownership mindset, and a track record of shipping production-oriented systems end-to-end.'}
-            </p>
-          </div>
-
-          {/* Technical Skills */}
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200 pb-1 mb-2.5">
-              Technical Skills &amp; Engineering Toolkit
-            </h4>
-            <div className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-xs">
-              <div>
-                <span className="font-semibold text-slate-900">Languages:</span> Python, TypeScript, JavaScript (ES6+), SQL, C, C++
-              </div>
-              <div>
-                <span className="font-semibold text-slate-900">GenAI &amp; Multi-Agent RAG:</span> Google GenAI (Gemini 2.5 Flash), Multi-Agent Orchestration, HITL Gates, Hybrid RAG, LangChain, ChromaDB, BioBERT + PubMedQA, LayoutLMv3, Donut, SciBERT
-              </div>
-              <div>
-                <span className="font-semibold text-slate-900">ML &amp; Deep Learning:</span> TensorFlow, Keras, BiLSTM, LSTM, RNN, XGBoost, LightGBM, Random Forest, Scikit-Learn, Pandas, NumPy, NLP, Document OCR
-              </div>
-              <div>
-                <span className="font-semibold text-slate-900">Backend &amp; Services:</span> FastAPI, Pydantic v2, Node.js 22, Express.js, REST APIs, Microservices, gRPC &amp; Protobuf, RabbitMQ, WebSockets, Uvicorn, Node-Cron
-              </div>
-              <div>
-                <span className="font-semibold text-slate-900">Databases:</span> SQL &amp; AWS RDS, PostgreSQL 16 &amp; pgvector, MongoDB, Mongoose ODM, ChromaDB &amp; FAISS Vector Store
-              </div>
-              <div>
-                <span className="font-semibold text-slate-900">Frontend:</span> React 19, React.js, TypeScript, Tailwind CSS v4, Vite, React Router DOM, Axios, Chart.js
-              </div>
-              <div>
-                <span className="font-semibold text-slate-900">Cloud, DevOps &amp; Tools:</span> Docker, Docker Compose, Nginx, Render, Vercel, AWS Cloud Practitioner, Git, GitHub, Postman, pytest, Figma, Canva
-              </div>
-              <div>
-                <span className="font-semibold text-slate-900">Core CS:</span> Data Structures &amp; Algorithms, Operating Systems, DBMS, OOP, Software Engineering, Agile/Scrum
+                {/* Close Button */}
+                <button
+                  onClick={onClose}
+                  className="rounded-full p-1.5 text-slate-400 hover:bg-slate-200 hover:text-slate-700 transition-colors"
+                  aria-label="Close"
+                >
+                  <X className="h-5 w-5" />
+                </button>
               </div>
             </div>
-          </div>
 
-          {/* Experience */}
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200 pb-1 mb-3">
-              Work & Leadership Experience
-            </h4>
-            <div className="space-y-4">
-              <div>
-                <div className="flex flex-wrap items-baseline justify-between gap-1">
-                  <h5 className="font-bold text-slate-900">
-                    Student Intern — Vehicle Intelligence & Digital Twin Systems
-                  </h5>
-                  <span className="text-xs font-semibold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">
-                    Tata Technologies · June 2026 – August 2026
-                  </span>
+            {/* Main Resume Canvas */}
+            <div className="flex-1 overflow-y-auto p-3 sm:p-6 bg-slate-200/80">
+              {viewMode === 'pdf' ? (
+                <div className="w-full h-[78vh] rounded-xl overflow-hidden bg-white shadow-xl border border-slate-300 flex flex-col">
+                  <div className="bg-slate-800 text-white px-4 py-2 text-xs flex items-center justify-between">
+                    <span className="font-mono text-slate-300">Sanika_Tare_Resume.pdf (Latest Version)</span>
+                    <a
+                      href="/Sanika_Tare_Resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-brand-300 hover:text-white"
+                    >
+                      <span>Open in new tab</span>
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
+                  <iframe
+                    src="/Sanika_Tare_Resume.pdf#toolbar=1&navpanes=0&scrollbar=1"
+                    title="Sanika Tare Resume PDF"
+                    className="w-full flex-1 border-0"
+                  />
                 </div>
-                <p className="text-xs text-slate-500 italic mb-1.5">Pune, Maharashtra, India</p>
-                <ul className="list-disc pl-4 space-y-1 text-xs text-slate-700">
-                  <li>
-                    <strong className="text-slate-900">Backend & API development:</strong> Built AI-driven services in Python and FastAPI, integrating predictive-maintenance and diagnostic models into a conversational, API-accessible Vehicle Health Digital Twin.
-                  </li>
-                  <li>
-                    <strong className="text-slate-900">Data & database work:</strong> Engineered vehicle health scoring and fault-explanation logic over structured sensor/telemetry data, feeding decision-ready outputs to downstream services.
-                  </li>
-                  <li>
-                    <strong className="text-slate-900">AI-assisted engineering:</strong> Used LangChain, ChromaDB, and LLM tooling to build a RAG-based Q&A system over vehicle manuals and OBD-II documentation for automated diagnostics.
-                  </li>
-                  <li>
-                    <strong className="text-slate-900">Applied ML:</strong> Built XGBoost, Random Forest, and LightGBM models for failure prediction and remaining-useful-life (RUL) estimation in an Agile cross-functional environment.
-                  </li>
-                </ul>
+              ) : (
+                /* Authentic 1-Page Resume Layout matching the provided PDF exact text and styling */
+                <div className="resume-sheet mx-auto max-w-3xl bg-white text-slate-900 rounded-xl shadow-xl border border-slate-200/80 p-6 sm:p-8 md:p-10 text-[12.5px] leading-snug font-sans print:shadow-none print:border-none print:p-0">
+                  {/* HEADER */}
+                  <header className="text-center pb-2 border-b border-slate-900">
+                    <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
+                      SANIKA TARE
+                    </h1>
+                    <p className="text-xs sm:text-sm font-bold tracking-wider text-slate-800 mt-0.5">
+                      AI SOFTWARE ENGINEER
+                    </p>
+                    <div className="mt-1 text-[11px] text-slate-700 flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5">
+                      <span>Pune, Maharashtra, India</span>
+                      <span>|</span>
+                      <a href={`tel:${profile.phone}`} className="hover:text-brand-600 font-medium">
+                        +91-7249255572
+                      </a>
+                      <span>|</span>
+                      <a href={`mailto:${profile.email}`} className="text-brand-600 hover:underline font-medium">
+                        sanikatare.work@gmail.com
+                      </a>
+                    </div>
+                    <div className="mt-0.5 text-[11px] text-slate-700 flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5">
+                      <a
+                        href="https://github.com/sanikatare"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-brand-600 hover:underline"
+                      >
+                        github.com/sanikatare
+                      </a>
+                      <span>|</span>
+                      <a
+                        href="https://linkedin.com/in/sanikatare"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-brand-600 hover:underline"
+                      >
+                        linkedin.com/in/sanikatare
+                      </a>
+                      <span>|</span>
+                      <a
+                        href="https://portfolio-three-bay-okimzvh4sn.vercel.app"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-brand-600 hover:underline"
+                      >
+                        portfolio-three-bay-okimzvh4sn.vercel.app
+                      </a>
+                    </div>
+                  </header>
+
+                  {/* PROFESSIONAL SUMMARY */}
+                  <section className="mt-3">
+                    <h2 className="text-xs font-bold tracking-wider uppercase text-slate-900 border-b border-slate-800 pb-0.5 mb-1.5">
+                      PROFESSIONAL SUMMARY
+                    </h2>
+                    <p className="text-[11.5px] text-slate-800 text-justify leading-relaxed">
+                      Results-driven Software Engineer and Computer Engineering student (B.E., 2027) who builds sustainable, efficient web applications with exceptional user interfaces. Strong in full-stack development, system design, and data-driven problem solving, with measurable results across an industry internship and two benchmarked projects. Collaborative leader who takes ownership and delivers reliable, user-focused solutions.
+                    </p>
+                  </section>
+
+                  {/* TECHNICAL SKILLS */}
+                  <section className="mt-3">
+                    <h2 className="text-xs font-bold tracking-wider uppercase text-slate-900 border-b border-slate-800 pb-0.5 mb-1.5">
+                      TECHNICAL SKILLS
+                    </h2>
+                    <div className="space-y-0.5 text-[11.5px] leading-relaxed text-slate-800">
+                      <div>
+                        <strong className="font-bold text-slate-900">Languages:</strong> Python, JavaScript, TypeScript, Java, C, C++, SQL
+                      </div>
+                      <div>
+                        <strong className="font-bold text-slate-900">AI/ML:</strong> Machine Learning, Deep Learning, NLP, Transformers, XGBoost, Predictive Analytics, Feature Engineering, SHAP, Prompt Engineering
+                      </div>
+                      <div>
+                        <strong className="font-bold text-slate-900">GenAI &amp; RAG:</strong> LLMs, RAG, AI Agents, Multi-Agent Systems, LangChain, FAISS, BM25, ChromaDB, Embeddings, Hybrid Search, Reranking, Gemini
+                      </div>
+                      <div>
+                        <strong className="font-bold text-slate-900">Backend:</strong> FastAPI, Node.js, Express.js, REST APIs, Microservices, JWT, RBAC, SQLAlchemy, Pydantic
+                      </div>
+                      <div>
+                        <strong className="font-bold text-slate-900">Frontend &amp; UI:</strong> React.js, React 19, TypeScript, HTML5, CSS3, Tailwind CSS, Vite, Recharts, Responsive Design
+                      </div>
+                      <div>
+                        <strong className="font-bold text-slate-900">Databases &amp; Cloud:</strong> PostgreSQL, MongoDB, pgvector, AWS, Docker, Docker Compose, Nginx
+                      </div>
+                      <div>
+                        <strong className="font-bold text-slate-900">CS Fundamentals:</strong> DSA, OOP, DBMS, Operating Systems, Computer Networks, Distributed Systems, System Design
+                      </div>
+                      <div>
+                        <strong className="font-bold text-slate-900">Leadership &amp; Soft Skills:</strong> Team Leadership, Collaboration, Technical Communication, Ownership, Problem Solving
+                      </div>
+                    </div>
+                  </section>
+
+                  {/* EXPERIENCE */}
+                  <section className="mt-3">
+                    <h2 className="text-xs font-bold tracking-wider uppercase text-slate-900 border-b border-slate-800 pb-0.5 mb-1.5">
+                      EXPERIENCE
+                    </h2>
+                    <div>
+                      <div className="flex flex-wrap items-baseline justify-between gap-1 text-[12px]">
+                        <div>
+                          <strong className="font-bold text-slate-900">Tata Technologies</strong>
+                          <span className="text-slate-800"> — AI/ML Engineering Intern, Vehicle IQ Digital Twin | Pune, India</span>
+                        </div>
+                        <span className="font-bold text-slate-900 text-[11.5px]">June 2026 – August 2026</span>
+                      </div>
+                      <p className="text-[11px] text-slate-600 italic font-mono mt-0.5">
+                        Python | XGBoost | SHAP | FastAPI | React 19 | LangChain | ChromaDB | Gemini | RAG | Docker | Nginx
+                      </p>
+                      <ul className="mt-1 list-disc pl-4 space-y-0.5 text-[11.5px] leading-relaxed text-slate-800">
+                        <li>Developed an AI Vehicle Digital Twin for health monitoring, predictive maintenance, OBD-II diagnostics, and trip intelligence.</li>
+                        <li>Unified 8 automotive data sources into a 70,000-row, 209-feature dataset for health analysis and failure prediction.</li>
+                        <li>Built an XGBoost failure classifier (0.998 ROC-AUC, 99.4% recall) and Remaining Useful Life (RUL) estimation.</li>
+                        <li>Applied SHAP to identify torque, rotational speed, and tool wear as key failure drivers.</li>
+                        <li>Designed 8 independent FastAPI services with a React 19 dashboard, containerized with Docker Compose and Nginx.</li>
+                        <li>Implemented a LangChain, ChromaDB, and Gemini RAG pipeline for document-grounded diagnostic guidance.</li>
+                        <li>Delivered trip intelligence combining vehicle health, route, weather, and fuel data into travel advisories.</li>
+                      </ul>
+                    </div>
+                  </section>
+
+                  {/* PROJECTS */}
+                  <section className="mt-3">
+                    <h2 className="text-xs font-bold tracking-wider uppercase text-slate-900 border-b border-slate-800 pb-0.5 mb-1.5">
+                      PROJECTS
+                    </h2>
+                    <div className="space-y-2.5">
+                      {/* Project 1 */}
+                      <div>
+                        <div className="text-[12px]">
+                          <strong className="font-bold text-slate-900">HomeIQ</strong>
+                          <span className="text-slate-800"> — Multi-Agent AI Home Intelligence Platform</span>
+                        </div>
+                        <p className="text-[11px] text-slate-600 italic font-mono mt-0.5">
+                          Python | FastAPI | PostgreSQL | pgvector | LangChain | Gemini | BioBERT | RAG | Docker
+                        </p>
+                        <ul className="mt-1 list-disc pl-4 space-y-0.5 text-[11.5px] leading-relaxed text-slate-800">
+                          <li>Built a multi-agent platform with 8 domain agents (Kitchen, Laundry, Maintenance, Finance, Vehicles, Documents, Health, Travel) and tool-based workflows.</li>
+                          <li>Delivered document intelligence: 100% classification and extraction F1 on a 12-document benchmark.</li>
+                          <li>Designed grounded RAG with 100% citation correctness and 0% hallucination across 8 domain queries.</li>
+                          <li>Developed biomedical NLP reaching 99.7% biomarker F1, 98.9% PubMedQA accuracy, and 99.4% interaction F1.</li>
+                          <li>Verified 100% agent routing, 100% Human-in-the-Loop policy enforcement, zero cross-tenant leakage, 20/20 tables.</li>
+                        </ul>
+                      </div>
+
+                      {/* Project 2 */}
+                      <div>
+                        <div className="text-[12px]">
+                          <strong className="font-bold text-slate-900">VedaWise</strong>
+                          <span className="text-slate-800"> — Explainable RAG &amp; Knowledge Retrieval System</span>
+                        </div>
+                        <p className="text-[11px] text-slate-600 italic font-mono mt-0.5">
+                          Python | FAISS | BM25 | RRF | Transformers | Reranking | RAG | LLMs
+                        </p>
+                        <ul className="mt-1 list-disc pl-4 space-y-0.5 text-[11.5px] leading-relaxed text-slate-800">
+                          <li>Architected an explainable RAG system over 10,546 verses using BM25, 384-dim embeddings, FAISS, RRF, reranking, and evidence filtering.</li>
+                          <li>Improved retrieval on a 92-question benchmark to 90% Recall@10, 0.7838 MRR, and 0.7120 nDCG@5.</li>
+                          <li>Implemented citation verification and abstention: 100% citation precision and abstention accuracy.</li>
+                          <li>Reached 93.75% answer correctness at 115.7 ms average query latency while enforcing evidence boundaries.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  {/* ACHIEVEMENTS */}
+                  <section className="mt-3">
+                    <h2 className="text-xs font-bold tracking-wider uppercase text-slate-900 border-b border-slate-800 pb-0.5 mb-1.5">
+                      ACHIEVEMENTS
+                    </h2>
+                    <ul className="list-disc pl-4 space-y-0.5 text-[11.5px] leading-relaxed text-slate-800">
+                      <li>Filed a patent for an ML-based predictive Li-Fi/Wi-Fi handover system using smartphone motion sensors.</li>
+                      <li>Presented AI/ML predictive-systems research at KSHITIJ 2026.</li>
+                    </ul>
+                  </section>
+
+                  {/* EDUCATION */}
+                  <section className="mt-3">
+                    <h2 className="text-xs font-bold tracking-wider uppercase text-slate-900 border-b border-slate-800 pb-0.5 mb-1.5">
+                      EDUCATION
+                    </h2>
+                    <div className="text-[11.5px] leading-relaxed">
+                      <div className="flex flex-wrap items-baseline justify-between gap-1">
+                        <strong className="font-bold text-slate-900">
+                          Pimpri Chinchwad College of Engineering | Pune, Maharashtra
+                        </strong>
+                        <span className="font-bold text-slate-900 text-[11px]">2023 – 2027 (Expected)</span>
+                      </div>
+                      <div className="text-slate-800">
+                        Bachelor of Engineering in Computer Engineering | Coursework: AI, ML, DSA, DBMS, Networks, Distributed Systems
+                      </div>
+                    </div>
+                  </section>
+
+                  {/* CERTIFICATIONS */}
+                  <section className="mt-3">
+                    <h2 className="text-xs font-bold tracking-wider uppercase text-slate-900 border-b border-slate-800 pb-0.5 mb-1.5">
+                      CERTIFICATIONS
+                    </h2>
+                    <ul className="list-disc pl-4 space-y-0.5 text-[11.5px] leading-relaxed text-slate-800">
+                      <li>Databricks — Generative AI Fundamentals</li>
+                      <li>AWS — Cloud Practitioner Essentials</li>
+                      <li>The AI Engineer Course — Bootcamp</li>
+                      <li>AICTE — Generative AI Virtual Internship</li>
+                      <li>Data Structures using C and C++</li>
+                      <li>IIT Guwahati — Summer Analytics</li>
+                    </ul>
+                  </section>
+                </div>
+              )}
+            </div>
+
+            {/* Bottom Modal Actions */}
+            <div className="flex flex-wrap items-center justify-between border-t border-slate-200 bg-white px-4 sm:px-6 py-3 print:hidden">
+              <div className="text-xs text-slate-500">
+                Direct Contact: <a href={`mailto:${profile.email}`} className="font-semibold text-brand-600 hover:underline">{profile.email}</a>
+                <span className="mx-1.5 text-slate-300">·</span>
+                <span className="font-medium text-slate-600">{profile.phone}</span>
               </div>
-
-              <div>
-                <div className="flex flex-wrap items-baseline justify-between gap-1">
-                  <h5 className="font-bold text-slate-900">
-                    Design Executive
-                  </h5>
-                  <span className="text-xs font-semibold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">
-                    Google Developer Groups On Campus (GDGC PCCOE) · 2024 – 2025
-                  </span>
-                </div>
-                <p className="text-xs text-slate-500 italic mb-1.5">
-                  PCCOE Pune · Tools: Canva, Figma, AI tools
-                </p>
-                <ul className="list-disc pl-4 space-y-0.5 text-xs text-slate-700">
-                  <li>Lead digital content creation, social media creatives, and visual branding across all GDGC PCCOE community programs and hackathons.</li>
-                  <li>Develop UI/UX wireframes, interactive prototypes, and design systems for web portals using Figma and Canva.</li>
-                  <li>Execute creative concepts, marketing &amp; promotional assets, presentation decks, and typography layouts with high visual fidelity.</li>
-                </ul>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap items-baseline justify-between gap-1">
-                  <h5 className="font-bold text-slate-900">
-                    Marketing Executive
-                  </h5>
-                  <span className="text-xs font-semibold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">
-                    PCCOE ACM Student Chapter · 2024 – 2025
-                  </span>
-                </div>
-                <p className="text-xs text-slate-500 italic mb-1.5">
-                  PCCOE Pune · Tool: Canva · Digital Marketing &amp; Campaign Strategy
-                </p>
-                <ul className="list-disc pl-4 space-y-0.5 text-xs text-slate-700">
-                  <li>Lead digital marketing campaigns, social media management, brand promotion, and event marketing for chapter symposiums.</li>
-                  <li>Design promotional creatives in Canva; author targeted copywriting to drive community building and high event turnouts.</li>
-                  <li>Track campaign analytics, audience engagement metrics, and cross-functional collaboration to expand ACM&apos;s campus reach.</li>
-                </ul>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleCopyLink}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                  title="Copy direct download link"
+                >
+                  {copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
+                  <span>{copied ? 'Link Copied!' : 'Copy Link'}</span>
+                </button>
+                <a
+                  href="/Sanika_Tare_Resume.pdf"
+                  download="Sanika_Tare_Resume.pdf"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-brand-500 hover:bg-brand-600 text-white px-4 py-1.5 text-xs font-bold shadow-md transition-all hover:scale-105"
+                >
+                  <Download className="h-3.5 w-3.5" />
+                  <span>Download Latest Resume</span>
+                </a>
               </div>
             </div>
-          </div>
-
-          {/* Projects */}
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200 pb-1 mb-3">
-              Key Projects
-            </h4>
-            <div className="space-y-3.5 text-xs">
-              <div>
-                <div className="flex flex-wrap items-baseline justify-between">
-                  <span className="font-bold text-slate-900">
-                    1. Digital Twin (Vehicle Brain) — 8-Phase Automotive AI Platform
-                  </span>
-                  <span className="text-slate-500 font-mono">Python, FastAPI, React.js, LangChain, ChromaDB, XGBoost, Docker</span>
-                </div>
-                <p className="mt-1 text-slate-700">
-                  Unified 8-phase vehicle telemetry, anomaly detection, predictive RUL estimation (XGBoost/LightGBM), and OBD-II RAG diagnostics dashboard with Docker Compose &amp; Nginx gateway.
-                </p>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap items-baseline justify-between">
-                  <span className="font-bold text-slate-900">
-                    2. GenAI (VedaWise) — Explainable Hybrid RAG System
-                  </span>
-                  <span className="text-slate-500 font-mono">TypeScript, React.js, Python, Hybrid RAG, LLMs, FastAPI</span>
-                </div>
-                <p className="mt-1 text-slate-700">
-                  Explainable AI platform for life-oriented knowledge discovery from the Rig Veda across 4 explicit epistemic layers with hybrid semantic + lexical retrieval and citation verification.
-                </p>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap items-baseline justify-between">
-                  <span className="font-bold text-slate-900">
-                    3. ElectroFine — Smart E-Waste Recycling &amp; Collector Tracking
-                  </span>
-                  <span className="text-slate-500 font-mono">TypeScript, React.js, Node.js, MongoDB, Mongoose, Tailwind CSS</span>
-                </div>
-                <p className="mt-1 text-slate-700">
-                  Modern e-waste disposal platform with smart pickup scheduling, live collector tracking, and a dynamic fair-payout valuation engine.
-                </p>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap items-baseline justify-between">
-                  <span className="font-bold text-slate-900">
-                    4. Home IQ — Autonomous Household Intelligence &amp; Multi-Agent Platform
-                  </span>
-                  <span className="text-slate-500 font-mono">React 19, TypeScript, FastAPI, SQLAlchemy 2.0, PostgreSQL, Gemini 2.5, BioBERT</span>
-                </div>
-                <p className="mt-1 text-slate-700">
-                  Policy-governed household operating system unifying 8 household domains over a 22-table relational core, multi-agent orchestrator with HITL approval gates, and BioBERT + PubMedQA (99.7% F1) clinical lab analysis.
-                </p>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap items-baseline justify-between">
-                  <span className="font-bold text-slate-900">
-                    5. PawPrints — Full-Stack Pet Health Monitoring &amp; Diagnosis System
-                  </span>
-                  <span className="text-slate-500 font-mono">MERN Stack (React.js, Node.js, Express.js, MongoDB, JWT, bcrypt)</span>
-                </div>
-                <p className="mt-1 text-slate-700">
-                  Full-stack healthcare platform across 6+ core modules and 15+ REST APIs with symptom-based disease prediction, vaccination tracking, and RBAC security.
-                </p>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap items-baseline justify-between">
-                  <span className="font-bold text-slate-900">
-                    6. Hinglish Sentiment Analysis — Comparative Deep Learning
-                  </span>
-                  <span className="text-slate-500 font-mono">Python, BiLSTM, LSTM, RNN, TensorFlow, Keras</span>
-                </div>
-                <p className="mt-1 text-slate-700">
-                  Benchmarked RNN, LSTM, and BiLSTM models on code-mixed Hindi-English social media text, achieving 94.86% accuracy with Bidirectional LSTM.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Education */}
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200 pb-1 mb-2.5">
-              Education
-            </h4>
-            <div className="space-y-3 text-xs">
-              <div>
-                <div className="flex flex-wrap items-baseline justify-between">
-                  <span className="font-bold text-slate-900">
-                    D.A.V. Public School (DAV)
-                  </span>
-                  <span className="text-slate-500 font-mono">2010 – 2021</span>
-                </div>
-                <p className="text-slate-600">
-                  Schooling &amp; Junior College (Class X &amp; Class XII) — Science Stream (PCM with Computer Science)
-                </p>
-                <p className="text-slate-500 text-[11px] mt-0.5">
-                  High distinction in Mathematics, Physics &amp; Computer Science; foundation in C++ and Python
-                </p>
-                <p className="text-brand-700 text-[11px] mt-0.5 font-medium">
-                  Activities: Leadership &amp; Teamwork, Active Participation in Competitions, Event Coordination, Strong Communication, Problem-Solving &amp; Adaptability
-                </p>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap items-baseline justify-between">
-                  <span className="font-bold text-slate-900">
-                    Pimpri Chinchwad College of Engineering (PCCOE), Pune
-                  </span>
-                  <span className="text-slate-500 font-mono">2023 – 2027</span>
-                </div>
-                <p className="text-slate-600">
-                  Bachelor of Technology – Computer Engineering · Minor: Generative AI Tools &amp; Techniques
-                </p>
-                <p className="text-slate-500 text-[11px] mt-0.5">
-                  Activities: GDGC PCCOE Design Executive, PCCOE ACM Marketing Executive, Patent Research Team
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Certifications & Achievements */}
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200 pb-1 mb-2">
-              Certifications & Achievements
-            </h4>
-            <ul className="grid sm:grid-cols-2 gap-1.5 text-xs text-slate-700">
-              <li className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-                <span><strong>Patent Application Filed:</strong> LiFi-WiFi Intelligent Handover System</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-                <span><strong>AWS Cloud Practitioner Essentials</strong> (Certified)</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-                <span><strong>Data Science & Machine Learning:</strong> IIT Guwahati</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-                <span><strong>Mastering DSA using C & C++:</strong> Abdul Bari</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-                <span><strong>Complete Web Development:</strong> Udemy</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-                <span><strong>Smart India Hackathon & Google GenAI Exchange</strong> Participant</span>
-              </li>
-            </ul>
-          </div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Footer actions */}
-        <div className="flex flex-wrap items-center justify-between border-t border-slate-200 bg-slate-50 px-6 py-3.5">
-          <div className="text-xs text-slate-500">
-            Direct Email: <a href="mailto:sanikatare.work@gmail.com" className="font-semibold text-brand-600 hover:underline">sanikatare.work@gmail.com</a>
-          </div>
-          <div className="flex items-center gap-3">
-            <button
-              onClick={handleCopyLink}
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100"
-            >
-              {copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
-              <span>{copied ? 'Copied URL!' : 'Share Portfolio'}</span>
-            </button>
-            <a
-              href="mailto:sanikatare.work@gmail.com?subject=Interview%20/%20Opportunity%20Inquiry%20for%20Sanika%20Tare"
-              className="inline-flex items-center gap-1.5 rounded-full bg-brand-500 px-4 py-1.5 text-xs font-semibold text-white shadow hover:bg-brand-600"
-            >
-              <span>Get in Touch</span>
-              <ExternalLink className="h-3 w-3" />
-            </a>
-          </div>
-        </div>
           </motion.div>
         </motion.div>
       )}

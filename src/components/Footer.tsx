@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail, Phone, MapPin, FileText } from 'lucide-react'
+import { ArrowUpRight, Mail, Phone, MapPin, FileText, Download } from 'lucide-react'
 import { GithubIcon, LinkedinIcon, MediumIcon } from './BrandIcons'
 import { profile } from '../data/portfolio'
 
@@ -95,15 +95,24 @@ export default function Footer({ onOpenResume }: FooterProps) {
               {onOpenResume && (
                 <button
                   onClick={onOpenResume}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white px-4 py-2 text-xs font-semibold transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white px-3.5 py-2 text-xs font-semibold transition-colors"
                 >
                   <FileText className="h-3.5 w-3.5 text-brand-400" />
-                  <span>Verified Resume</span>
+                  <span>Resume</span>
                 </button>
               )}
               <a
+                href="/Sanika_Tare_Resume.pdf"
+                download="Sanika_Tare_Resume.pdf"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white px-3.5 py-2 text-xs font-semibold transition-colors"
+                title="Download Sanika Tare Resume PDF"
+              >
+                <Download className="h-3.5 w-3.5 text-emerald-400" />
+                <span>Download PDF</span>
+              </a>
+              <a
                 href={`mailto:${profile.email}?subject=Opportunity%20/%20Project%20Discussion`}
-                className="inline-flex items-center gap-1 rounded-full bg-brand-500 hover:bg-brand-600 text-white px-5 py-2 text-xs font-semibold shadow-glow-blue transition-all"
+                className="inline-flex items-center gap-1 rounded-full bg-brand-500 hover:bg-brand-600 text-white px-4 py-2 text-xs font-semibold shadow-glow-blue transition-all"
               >
                 <span>Get in touch</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />
